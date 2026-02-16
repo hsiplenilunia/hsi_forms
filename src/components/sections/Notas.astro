@@ -1,0 +1,127 @@
+---
+import SpeakerOrganicBg from "../atoms/SpeakerOrganicBg.astro";
+import NotasCard from "../molecules/NotasCard.astro";
+
+import prensa_01 from '../../assets/notas/prensa_01.png';
+import prensa_02 from '../../assets/notas/prensa_02.png';
+import prensa_03 from '../../assets/notas/prensa_03.png';
+import prensa_04 from '../../assets/notas/prensa_04.png';
+import prensa_05 from '../../assets/notas/prensa_05.png';
+import prensa_06 from '../../assets/notas/prensa_06.png';
+import prensa_07 from '../../assets/notas/prensa_07.png';
+import prensa_08 from '../../assets/notas/prensa_08.png';
+import prensa_09 from '../../assets/notas/prensa_09.png';
+import prensa_10 from '../../assets/notas/prensa_10.png';
+
+// Define type for card variants
+interface CardData {
+  // State 1
+  imageSrc: string | ImageMetadata;
+  imageAlt: string;
+  // State 2
+  title: string;
+  underlinedText: string;
+  link?: string; // Optional link for more info
+}
+
+const cardData: CardData[] = [
+  {
+    title: "Aumenta riesgo de incontinencia urinaria en la menopausia",
+    underlinedText:"vertigopolitico.com",
+    imageSrc: prensa_10,
+    imageAlt: "Aumenta riesgo de incontinencia urinaria en la menopausia - vertigopolitico.com",
+    link: "https://www.vertigopolitico.com/bienestar/notas/aumenta-riesgo-incontinencia-urinaria-en-la-menopausia"
+  },
+  {
+    title: "MÁS DE 40 SÍNTOMAS QUE AFECTAN LA CALIDAD DE VIDA DE LAS MUJERES",
+    underlinedText:"Mujer Infoma",
+    imageSrc: prensa_01,
+    imageAlt: "MÁS DE 40 SÍNTOMAS QUE AFECTAN LA CALIDAD DE VIDA DE LAS MUJERES - Mujer Infoma",
+    link: "https://mujerinforma.com/climaterio-menopausia-calidad-de-vida/"
+  },
+  {
+    title: "INDISPENSABLE VISIBILIZAR MENOPAUSIA PARA AVANZAR EN AGENDA DE SALUD",
+    underlinedText:"Agencia Quartín México",
+    imageSrc: prensa_02,
+    imageAlt: "INDISPENSABLE VISIBILIZAR MENOPAUSIA PARA AVANZAR EN AGENDA DE SALUD - Agencia Quartín México",
+    link: "https://mexico.quadratin.com.mx/indispensable-visibilizar-menopausia-para-avanzar-en-agenda-de-salud/"
+  },
+  {
+    title: "CLIMATERIO Y MENOPAUSIA, RETO PARA MUJERES",
+    underlinedText:"Revista Factor RH+",
+    imageSrc: prensa_03,
+    imageAlt: "CLIMATERIO Y MENOPAUSIA, RETO PARA MUJERES - Revista Factor RH+",
+    link:"https://revistafactorrh.com/sexualidad/item/12997-sintomas-que-afectan-a-mujeres-que-viven-el-climaterio-y-menopausia"
+  },
+  {
+    title: "PARA AVANZAR EN UNA AGENDA DE SALUD PÚBLICA, HAY QUE VISIBILIZAR LA MENOPAUSIA",
+    underlinedText:"La Crónica",
+    imageSrc: prensa_04,
+    imageAlt: "PARA AVANZAR EN UNA AGENDA DE SALUD PÚBLICA, HAY QUE VISIBILIZAR LA MENOPAUSIA - La Crónica",
+    link: "https://www.cronica.com.mx/nacional/2025/04/28/para-avanzar-en-una-agenda-de-salud-publica-hay-que-visibilizar-la-menopausia"
+  },
+  {
+    title: "INDISPENSABLE VISIBILIZAR EL TEMA DE LA MENOPAUSIA PARA AVANZAR EN LA AGENDA DE SALUD PÚBLICA",
+    underlinedText:"Observatorio Informativo",
+    imageSrc: prensa_05,
+    imageAlt: "INDISPENSABLE VISIBILIZAR EL TEMA DE LA MENOPAUSIA PARA AVANZAR EN LA AGENDA DE SALUD PÚBLICA - Observatorio Informativo",
+    link: "https://observatorioinformativo.com/indispensable-visibilizar-el-tema-de-la-menopausia-para-avanzar-en-agenda-de-salud-publica/"
+  },
+  {
+    title: "Tabús sobre sexualidad deben superarse para alcanzar la salud total en la menopausia.Imagen Poblana",
+    underlinedText:"Imagen Poblana",
+    imageSrc: prensa_06,
+    imageAlt: "Tabús sobre sexualidad deben superarse para alcanzar la salud total en la menopausia - Imagen Poblana",
+    link: "https://imagenpoblana.com/25/06/17/tabus-sobre-sexualidad-deben-superarse-para-alcanzar-la-salud-total-en-la-menopausia"
+  },
+  {
+    title: "Menopausia y sexualidad: clave para una salud integral sin tabúes",
+    underlinedText:"Plenilunia",
+    imageSrc: prensa_07,
+    imageAlt: "Menopausia y sexualidad: clave para una salud integral sin tabúes - Plenilunia",
+    link: "https://plenilunia.com/habitando-mi-menopausia-hablemos-claro-hablemos-juntas/menopausia-y-sexualidad/106094/"
+  },
+
+  {
+    title: "Menopausia: la metamorfosis silenciada de las mujeres",
+    underlinedText:"endirecto.mx",
+    imageSrc: prensa_08,
+    imageAlt: "Menopausia: la metamorfosis silenciada de las mujeres - endirecto.mx",
+    link: "https://endirecto.mx/menopausia-la-metamorfosis-silenciada-de-las-mujeres/"
+  },
+
+  {
+    title: "Menopausia: El momento perfecto para renacer como tu mejor versión",
+    underlinedText:"lomasrecomendable.com",
+    imageSrc: prensa_09,
+    imageAlt: "Menopausia: El momento perfecto para renacer como tu mejor versión - lomasrecomendable.com",
+    link: "https://lomasrecomendable.com/index.php/spa-fitness/item/4949-menopausia-el-momento-perfecto-para-renacer-como-tu-mejor-version"
+  },
+
+  
+  
+];
+const sectionStyles = `landing-section bg-guacamole min-h-screen w-screen flex items-center justify-center pt-24 px-4 relative overflow-y-hidden`;
+---
+
+<section
+  class={sectionStyles}
+  data-header-color={`guacamole`}
+  id='notas'
+>
+  <div class="container mx-auto px-0">
+    <h2 id="speakers-title" class="text-purple text-4xl font-bold text-center mb-8 uppercase">
+      presencia en medios
+    </h2>
+
+    <div
+      class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+    >
+      {cardData.map((card) => (
+        <NotasCard
+          {...card}
+        />
+      ))}
+    </div>
+  </div>
+</section>

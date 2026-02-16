@@ -1,0 +1,41 @@
+---
+const { color, title, subtitle, subtitle2, id, cta } = Astro.props;
+const textColor = `text-${color}`;
+import IceCreamIcon from "./icons/IceCreamIcon.astro";
+---
+
+<section
+  class="landing-section bg-[#7758AC] h-screen w-screen text-center overflow-hidden relative"
+  data-header-color={color}
+  id={id}
+>
+  <div class="z-30 relative h-full flex flex-col items-end">
+    <header
+      class="flex flex-col justify-center h-[90%] lg:w-[50%] lg:max-w-[923px] bg-[#FFF3E8] rounded-bl-[300px] pl-20 pr-10 2xl:pl-24 2xl:pr-18 py-16 text-[#3D1F1F] text-left font-sans"
+    >
+      <h2
+        class={`text-5xl mb-4 lg:text-[96px] lg:leading-[96px] 2xl:leading-[120px] 2xl:text-[120px] font-medium font-serif text-[#6C3586]`}
+      >
+        {title}
+      </h2>
+      <div class="flex flex-col mt-4 gap-2">
+        <p class="text-[#3D1F1F] font-bold font-sans text-2xl lg:text-[24px] 2xl:text-[32px]">
+          {subtitle}
+        </p>
+        <p class="text-[#3D1F1F] font-sans text-2xl lg:text-[20px] 2xl:text-[32px] 2xl:leading-10">
+          {subtitle2}
+        </p>
+      </div>
+      <button
+        class="flex justify-center self-end mt-11 bg-[#C7315E] text-white font-semibold max-w-[375px] 2xl:max-w-[480px] 2xl:text-[32px] px-6 py-2 rounded-full text-base inline-flex items-center"
+      >
+        <span class="text-lg lg:text-[24px] mr-3">Quiero probarlos hoy</span>
+        <IceCreamIcon class="inline-block ml-1.5 h-5 w-5" />
+      </button>
+    </header>
+  </div>
+
+  <div class="absolute top-0 bottom-0 h-full w-full z-10">
+    <slot name="background" />
+  </div>
+</section>

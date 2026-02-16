@@ -1,0 +1,52 @@
+---
+import HeroSection from "../components/HeroSection.astro";
+import LandingHeader from "../components/LandingHeader.astro";
+import QuienesSomos from "../components/sections/QuienesSomos.astro";
+import Actualidad from "../components/sections/Actualidad.astro";
+import Actualidad2 from "../components/sections/Actualidad2.astro";
+import Sede from "../components/sections/Sede.astro";
+
+import Layout from "../layouts/Layout.astro";
+import SiteFooter from "../components/molecules/SiteFooter.astro";
+
+import PorqueAsistir from "../components/sections/PorqueAsistir.astro";
+import Speakers from "../components/sections/Speakers.astro";
+import Notas from "../components/sections/Notas.astro";
+import Recursos from "../components/sections/Recursos.astro";
+import Patrocinadores from "../components/sections/Patrocinadores.astro";
+import Patrocinadores2 from "../components/sections/Patrocinadores2.astro";
+import FlujoRegistroIsland from "../components/islands/FlujoRegistroIsland.tsx";
+import { BearCounter } from "../components/storeTest/BearCounter";
+import { BearControls } from "../components/storeTest/BearControls";
+import OpenPopUpButton from "../components/islands/atoms/OpenPopUpButton";
+---
+
+<Layout title="Foro Menopausia 2025">
+  <LandingHeader />
+
+  <main
+    class="relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
+  >
+    
+    <div class="snap-center">
+      <Notas />
+    </div>
+    
+    <div class="snap-center">
+      <Recursos />
+      
+    </div> 
+    <div class="snap-center">
+      <Patrocinadores2 />
+      
+    </div>
+    <div class="snap-center">
+      
+      <SiteFooter />
+    </div> 
+  
+
+  
+    
+  </main>
+</Layout>

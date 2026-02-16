@@ -1,0 +1,245 @@
+---
+import SpeakerOrganicBg from "../atoms/SpeakerOrganicBg.astro";
+import { Image } from "astro:assets";
+
+import speaker_01 from "../../assets/speakers/speaker_Rampazzo.webp";
+import speaker_02 from "../../assets/speakers/speaker_02.png";
+import speaker_03 from "../../assets/speakers/speaker_03.png";
+import speaker_04 from "../../assets/speakers/speaker_04.png";
+import speaker_05 from "../../assets/speakers/speaker_05.png";
+import speaker_06 from "../../assets/speakers/speaker_gaby_rojas.webp";
+import speaker_07 from "../../assets/speakers/speaker_mamem_diaz.webp";
+import speaker_08 from "../../assets/speakers/speaker_08.png";
+import speaker_09 from "../../assets/speakers/speaker_09.png";
+import speaker_10 from "../../assets/speakers/speaker_marcela_vasquez.png";
+import speaker_11 from "../../assets/speakers/speaker_dr_bernard.png";
+import speaker_12 from "../../assets/speakers/sophie_sosa.webp";
+import speaker_13 from "../../assets/speakers/speaker_karla.webp";
+import speaker_14 from "../../assets/speakers/speaker_adipulido.webp";
+import speaker_15 from "../../assets/speakers/speaker_paty_k.webp";
+import speaker_16 from "../../assets/speakers/speaker_primavera_rubio.png";
+import speaker_17 from "../../assets/speakers/speaker_maria_milagros_kirpach.png";
+import speaker_18 from "../../assets/speakers/juana_ramirez.png";
+import speaker_19 from "../../assets/speakers/speaker_erandi.png";
+import speaker_20 from "../../assets/speakers/speaker_mary_carmen_mondragon.png";
+import speaker_21 from "../../assets/speakers/speaker_victor_mundo.png";
+import speaker_22 from "../../assets/speakers/speaker_aurea.png";
+//src/assets/speakers/speaker_aurea.png
+
+//jss_csgtz
+const speakers = [
+  {
+    name: "Dra. Claudia Rampazzo",
+    role: "Médica, Sexóloga Clínica y Psicoterapeuta",
+    imgSrc: speaker_01,
+    style: "relative top-[10px] max-w-[170px]",
+  },
+
+  {
+    name: "Dra. Edna Cortés Fuentes",
+    role: "Médico especialista en ginecología y uroginecología",
+    imgSrc: speaker_08,
+    style: "relative top-[0px] max-w-[150px]",
+  },
+
+  {
+    name: "Dra. Edith Cervantes Guerrero",
+    role: "Ginecobstetra Especializada en Biología de la Reproducción",
+    imgSrc: speaker_04,
+  },
+
+  {
+    name: "Dra. Mari Mar Álvarez",
+    role: "Cirujana Plástico y Fundadora de Nova House",
+    imgSrc: speaker_02,
+  },
+
+  {
+    name: "Dra. Paloma de la Torre",
+    role: "Ginecobstetra con especialidad en manejo de menopausia y climaterio",
+    imgSrc: speaker_09,
+    style: "relative top-[0px] max-w-[150px]",
+    noBgLayer: true,
+  },
+
+  {
+    name: "Fernanda Zárate",
+    role: "Sexóloga Clínica y Psicóloga",
+    imgSrc: speaker_03,
+  },
+
+  {
+    name: "Bernard Kizer",
+    role: "Especialista en hormonas femeninas",
+    imgSrc: speaker_11,
+    style: "relative top-[0px] max-w-[180px]",
+  },
+
+  {
+    name: "Karla Barajas",
+    role: "Autora best seller y creadora de contenido",
+    imgSrc: speaker_13,
+    style: "relative top-[0px] max-w-[150px]",
+  },
+
+   {
+    name: "Dra. Erandi Fernández",
+    role: "Especialista en salud femenina<br/>en Astellas Pharma",
+    imgSrc: speaker_19,
+    style: "relative top-[0px] max-w-[180px]",
+  },
+
+  {
+    name: "Lilyán de la Vega",
+    role: "COACH, ESCRITORA Y CONSULTORA CON ENFOQUE DE GÉNERO",
+    imgSrc: speaker_05,
+  },
+  {
+    name: "Gaby Rojas",
+    role: "Maestra en Derecho y en Administración Pública.<br/> Fundadora y CEO Sin Reglas",
+    imgSrc: speaker_06,
+    style: "relative top-[2px] max-w-[180px]",
+  },
+  {
+    name: "Mamem Díaz",
+    role: "Economista. Cofundadora y <br />COO Sin Reglas",
+    imgSrc: speaker_07,
+  },
+
+  {
+    name: "María Milagros Kirpach",
+    role: "Co-Fundadora y Directora Ejecutiva de No Pausa",
+    imgSrc: speaker_17,
+  },
+
+  {
+    name: "Marcela Vázquez Coronado",
+    role: "Consultora en salud y diseño de políticas con perspectiva de género",
+    imgSrc: speaker_10,
+    style: "relative top-[0px] max-w-[150px]",
+  },
+
+  {
+    name: "Adi Shakti",
+    role: "Terapauta holística, bioenergética y sanación femenina",
+    imgSrc: speaker_14,
+    style: "relative top-[0px] max-w-[150px]",
+  },
+
+  {
+    name: "Sophie Sosa",
+    role: "Directora de Fundación <br/> Medita México",
+    imgSrc: speaker_12,
+    style: "relative top-[0px] max-w-[150px]",
+  },
+
+  {
+    name: "Paty Kelly",
+    role: "Periodista, comunicadora y <br/>fundadora del canal Vejez Creativa",
+    imgSrc: speaker_15,
+    style: "relative top-[0px] max-w-[150px]",
+  },
+
+  {
+    name: "Primavera Rubio",
+    role: "Sonoterapeuta",
+    imgSrc: speaker_16,
+    style: "relative top-[0px] max-w-[150px]",
+  },
+
+
+  {
+    name: "Juana Ramírez",
+    role: "Presidenta y fundadora<br/>de Grupo SOHIN",
+    imgSrc: speaker_18,
+    
+  },
+
+  {
+    name: "Mary Carmen Mondragón",
+    role: "Directora de nutrición<br/>en Grupo LALA",
+    imgSrc: speaker_20,
+    style: "relative top-[0px] max-w-[180px]",
+  },
+
+  {
+    name: "Dr. Víctor Mundo",
+    role: "Director Médico de la división<br/>Consumer Health en Bayer",
+    imgSrc: speaker_21,
+    style: "relative top-[0px] max-w-[180px]",
+  },
+
+   {
+    name: "Dra. Diana Hernández",
+    role: "Médica cirujana especializada en gestión directiva en salud",
+    imgSrc: speaker_22,
+    style: "relative top-[0px] max-w-[180px]",
+  },
+  // Add more speakers as needed
+];
+const sectionStyles = `landing-section bg-purple min-h-screen w-screen flex items-center justify-center pt-24 px-8 relative overflow-y-hidden`;
+---
+
+<!-- <section aria-labelledby="speakers-title" class="py-16 bg-purple"> -->
+<section class={sectionStyles} data-header-color={`purple`} id="agenda">
+  <div class="container mx-auto px-4 pb-12">
+    <h2
+      id="speakers-title"
+      class="text-apple text-4xl font-bold text-center mb-8"
+    >
+      SPEAKERS 2025
+    </h2>
+
+    <div
+      class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 2xl:grid-cols-4"
+    >
+      {
+        speakers.map((speaker) => (
+          <div class="relative flex flex-col items-center text-center">
+            <div class="photo-container relative w-[188px] h-[231px] mb-4 flex items-end justify-center">
+              <div class="photo-container__bg absolute inset-0 w-full h-full">
+                {!speaker.noBgLayer && (
+                  <SpeakerOrganicBg class="w-full h-full" />
+                )}
+              </div>
+              <div class="photo-container__front_layer absolute inset-0 flex items-end justify-center">
+                <figure class="z-10">
+                  {typeof speaker.imgSrc === "object" ? (
+                    <Image
+                      src={speaker.imgSrc}
+                      alt={`Photo of ${speaker.name}`}
+                      class={`w-[188px] h-[231px] object-cover mx-auto ${speaker.style}`}
+                      width={188}
+                      height={231}
+                      loading="lazy"
+                      quality={100}
+                    />
+                  ) : (
+                    <img
+                      src={speaker.imgSrc}
+                      alt={`Photo of ${speaker.name}`}
+                      class="w-[188px] h-[231px] object-cover mx-auto"
+                      width="188"
+                      height="231"
+                      loading="lazy"
+                    />
+                  )}
+                </figure>
+              </div>
+            </div>
+
+            <div class="relative z-10 px-2">
+              <p class="text-white text-base leading-5 mb-2 font-bold uppercase">
+                {speaker.name}
+              </p>
+              <p
+                class="text-white text-sm leading-5 font-medium uppercase"
+                set:html={speaker.role}
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

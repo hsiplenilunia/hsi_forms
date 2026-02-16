@@ -1,0 +1,40 @@
+---
+// La dirección exacta para asegurar que el pin sea preciso.
+const direccionMuseo = "Av. Juarez 8, Colonia Centro, Centro, Cuauhtémoc, 06010 Ciudad de México, CDMX";
+const apiKey = "AIzaSyA-zULTzrf9rxm70kYs45joXgDOB7kRx-0";
+// URL para la API de Google Maps Embed. 
+// Reemplaza TU_API_KEY con tu propia clave de la API de Google Maps.
+// Puedes obtener una aquí: https://developers.google.com/maps/documentation/embed/get-api-key
+const mapSrc = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodeURIComponent(direccionMuseo)}`;
+---
+
+<div class="md:w-[90%] w-[100%] md:h-[90%] h-[100%] aspect-w-16 aspect-h-9 rounded-3xl overflow-hidden shadow-xl md:opacity-90 md:hover:opacity-100">
+  <iframe
+    src={mapSrc}
+    width="100%"
+    height="100%"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Mapa de ubicación del Museo Memoria y Tolerancia"
+  >
+  </iframe>
+</div>
+
+<style>
+/* Estilos para el contenedor responsivo del iframe.
+  Si no usas el plugin @tailwindcss/aspect-ratio, puedes usar este CSS.
+*/
+.aspect-w-16 {
+  position: relative;
+  padding-bottom: 56.25%; /* 9 / 16 = 0.5625 */
+}
+.aspect-h-9 iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+</style>

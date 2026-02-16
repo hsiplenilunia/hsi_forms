@@ -1,0 +1,515 @@
+---
+import { Image } from "astro:assets";
+import actualidad_woman from "../../assets/actualidad-woman.png";
+import Button from "../Button.astro";
+
+const sectionStyles = `landing-section bg-capuchino  w-screen flex items-center justify-center pt-24 px-8 relative overflow-y-hidden`;
+---
+
+<section class={sectionStyles} data-header-color={`capuchino`} id="actualidad">
+    <div
+        class="flex
+  flex-col
+  md:flex-row
+  items-center
+  justify-center
+  h-full
+  space-y-8
+  z-10
+  relative"
+    >
+        <div
+            class="flex flex-col text-purple md:pl-24 md:w-[60%] mt-14 md:mt-6 mb-0 md:mb-6"
+        >
+            <h1 class="text-lg md:text-4xl text-center font-bold uppercase mb-12">
+                AVISO DE PRIVACIDAD INTEGRAL <br />
+                PARA COMPRADORES DEL FORO
+            </h1>
+
+            <p class="mb-6">
+                De conformidad con lo previsto en la Ley Federal de Protección
+                de Datos Personales en Posesión de los Particulares (en lo
+                sucesivo, la <strong>"Ley"</strong>), el Reglamento de la Ley
+                Federal de Protección de Datos Personales en Posesión de los
+                Particulares (en lo sucesivo, el <strong>"Reglamento"</strong>),
+                y los Lineamientos del Aviso de Privacidad (en lo sucesivo, los <strong
+                    >"Lineamientos"</strong
+                >, y junto con la Ley, y el Reglamento, la <strong
+                    >"Legislación Aplicable"</strong
+                >), PLENILUNIA SC Y ATHA TALENT CON SU MARCA COMERCIAL ATHA
+                BIENESTAR (en lo sucesivo y de manera indistinta, el <strong
+                    >"(FORO" y/o "Nosotros"</strong
+                >), pone el presente aviso de privacidad integral (en lo
+                sucesivo, el <strong>"Aviso de Privacidad"</strong>), a
+                disposición de sus compradores usuarios y visitantes de la
+                página web www.foromenopausia.com (en lo sucesivo, el <strong
+                    >"Sitio"</strong
+                >), respecto de los cuales trata sus datos personales (en lo
+                sucesivo y de manera indistinta, <strong
+                    >"Usted" y/o el "Titular"</strong
+                >).
+            </p>
+
+            <h2 class="text-xl font-bold mb-4">
+                I. Identidad y Domicilio del Responsable
+            </h2>
+            <p class="mb-6">
+                El Foro, con domicilio en, Retorno 111 de Rio Churubusco No. 48
+                Colonia Unidad Modelo, Ciudad de México, 09089, será el
+                responsable de tratar los datos personales que Usted nos
+                proporcione, de conformidad con lo establecido en este Aviso de
+                Privacidad.
+            </p>
+
+            <h2 class="text-xl font-bold mb-4">
+                II. Datos personales que se recabarán
+            </h2>
+            <p class="mb-6">
+                El Foro recabará, a través del Sitio, los datos que se enuncian
+                a continuación, para ser tratados conforme al Apartado III de
+                este Aviso de Privacidad:
+            </p>
+            <p class="mb-6">
+                <strong
+                    >1) En caso de que Usted sea un asistente al evento como
+                    persona física:</strong
+                > (i) nombre(s), apellido paterno, y apellido materno; (ii) país;
+                (iii) teléfono fijo y/o celular; (iv) correo electrónico; (v) Registro
+                Federal de Contribuyentes; (vi) datos fiscales; (vii) datos bancarios;
+                (viii) fecha de nacimiento; y (ix) dirección IP y datos de navegación
+                (sitios visitados, la forma en que usa dichos sitios, la frecuencia
+                con la que los visita, y las secciones visitadas).
+            </p>
+            <p class="mb-6">
+                <strong
+                    >2) En el supuesto que Usted sea un interesado en adquirir
+                    los boletos al evento como persona moral:</strong
+                > (i) nombre(s), apellido paterno, y apellido materno; (ii) domicilio,
+                mismo que incluye calle o avenida, número, fraccionamiento o colonia,
+                alcaldía o municipio, código postal, estado y país.; (iii) teléfono
+                fijo y/o celular; (iv) correo electrónico; (v) Registro Federal de
+                Contribuyentes; (vi) datos fiscales; (vii) datos bancarios; y (viii)
+                dirección IP y datos de navegación (sitios visitados, la forma en
+                que usa dichos sitios, la frecuencia con la que los visita, y las
+                secciones visitadas).
+            </p>
+            <p class="mb-6">
+                Los datos personales recabados a través del Sitio serán
+                definidos como <strong>"Datos"</strong>.
+            </p>
+            <p class="mb-6">
+                El Foro manifiesta que, para las finalidades establecidas en el
+                Apartado III del presente Aviso de Privacidad, no solicitaremos
+                en forma alguna, y Usted no nos proporcionará en ningún momento, <strong
+                    >'datos personales sensibles'</strong
+                >, es decir, aquellos datos personales íntimos o cuya
+                utilización indebida pueda dar origen a discriminación o
+                conlleve un riesgo grave para Usted. En particular, Usted se
+                obliga a no proporcionarnos ningún dato relativo a su origen
+                racial o étnico, estado de salud, información genética,
+                creencias religiosas, filosóficas y/o morales, afiliación
+                sindical, opiniones políticas y/o preferencia sexual.
+            </p>
+            <p class="mb-6">
+                Los Datos que nos proporcione, así como los datos de la persona
+                moral en su caso, serán conservados en diferentes medios seguros
+                conforme nuestra tecnología lo permita, y el acceso a esta
+                información estará limitado solamente a las personas físicas Y/O
+                morales con las que compartamos su información. Consideramos que
+                contamos con medidas de seguridad adecuadas para proteger el uso
+                de esta información de terceros no autorizados. En caso de
+                requerimiento de alguna autoridad, sus Datos, así como los datos
+                de la persona moral en su caso, podrán ponerse a disposición de
+                ésta, dentro del estricto cumplimiento de los ordenamientos
+                legales aplicables.
+            </p>
+            <p class="mb-6">
+                Por otro lado, independientemente a los Datos que recaba El
+                Foro, incluyendo los relativos a personas morales, las
+                plataformas para procesar pagos, empresas de envíos,
+                intermediarios e instituciones bancarias para el procedimiento
+                de pago las compras que Usted efectúe, podrán recabar datos
+                personales adicionales. Estas personas morales son las
+                siguientes: "GoLiiive", Atha Talent con su marca comercial Atha
+                Bienestar y Plenilunia S.C. cuyas página de Internet es
+                https://www.goliiive.com, https://athabienestar.com y
+                https://plenilunia.com (las "Plataformas"), así como las
+                instituciones bancarias con las que efectúe el pago de las
+                compras el Titular.
+            </p>
+            <p class="mb-6">
+                Las Plataformas y las instituciones bancarias pueden recabar
+                datos adicionales de acuerdo con su propio aviso de privacidad.
+                Asimismo, las Plataformas son utilizadas por El Foro con el
+                propósito de facilitar el financiamiento de proyectos,
+                ofreciendo diversos medios de pago, a efecto de cumplir con los
+                fines de El Foro.
+            </p>
+            <p class="mb-6">
+                A fin de que Usted conozca la información general de las
+                plataformas que utilizamos como medio de pago y sus respectivos
+                avisos de privacidad, mismos que referimos en el párrafo
+                anterior, le señalamos lo siguiente: La Plataforma "Goliiive" es
+                operada por la sociedad denominada Goliiive, S.A. de C.V, con
+                domicilio en Av. Ejército Nacional 769 Piso 2 oficina Col.
+                Granada Miguel Hidalgo CP 11520 y, de conformidad con la
+                legislación en dicho país. Toda información que Usted
+                proporcione a la Plataforma estará sujeta al aviso de privacidad
+                disponible en la página de Internet
+                https://www.goliiive.com/politicas. La Plataforma controla toda
+                la información proporcionada por sus usuarios para la prestación
+                de sus propios servicios y El Foro no interviene de ningún modo
+                en la recopilación de los datos personales del Titular. Para
+                ello, antes de realizar una donación a través de esta
+                plataforma, Usted deberá aceptar los términos y políticas de
+                privacidad de la misma.
+            </p>
+
+            <h2 class="text-xl font-bold mb-4">
+                III. Finalidades del tratamiento de los Datos
+            </h2>
+            <p class="mb-6">
+                Los Datos que Usted nos proporcione en calidad de comprador, así
+                como los Datos de la persona moral de ser el caso, son
+                necesarios para que El Foro pueda cumplir con las finalidades
+                que se señalan a continuación: (i) identificarlo, localizarlo, y
+                contactarlo; (ii) emitir el comprobante fiscal correspondiente;
+                (iii) registrarlo en nuestra base de datos; (iv) dar seguimiento
+                a su aportación; (v) emitir cualquier comunicación relacionada
+                con fines de mercadotecnia y publicidad; (vi) entrega en
+                domicilio de los pedidos realizados y (vii) analizar la conducta
+                y tendencias de navegación del Titular.
+            </p>
+            <p class="mb-6">
+                Por otro lado, los Datos que Usted nos proporcione en calidad de
+                interesado en comprar, así como los datos de la persona moral de
+                ser el caso, son necesarios para que El Foro pueda cumplir con
+                las finalidades que se señalan a continuación: (i)
+                identificarlo, localizarlo, y contactarlo; (ii) registrarlo en
+                nuestra base de datos; (iii) dar seguimiento a su interés de
+                comprar; (iv) emitir cualquier comunicación relacionada con
+                fines de mercadotecnia y publicidad; y (v) analizar la conducta
+                y tendencias de navegación del Titular.
+            </p>
+            <p class="mb-6">
+                Los Datos que Usted nos proporcione en calidad de Usuario son
+                necesarios para que El Foro pueda cumplir con las finalidades
+                que se señalan a continuación: (i) analizar la conducta y
+                tendencias de navegación del Titular; (ii) promocionar contenido
+                en las redes sociales de El Foro, utilizando las fotografías
+                compartidas por parte del Titular; y (iii) emitir cualquier
+                comunicación relacionada con fines de mercadotecnia y
+                publicidad, ya sea a través de notificaciones emergentes vía
+                correo electrónico.
+            </p>
+            <p class="mb-6">
+                Finalmente, los Datos que Usted nos proporcione en calidad de
+                Visitante son necesarios para que El Foro pueda cumplir con las
+                finalidades que se señalan a continuación: (i) analizar la
+                conducta y tendencias de navegación del Titular.
+            </p>
+            <p class="mb-6">
+                Las finalidades contempladas en los numerales (i) a (iv)
+                respecto de los Datos de los compradores; los incisos (i) a
+                (iii) sobre los interesados en comprar; y los numerales (i) y
+                (ii) de los Usuarios, son necesarias para la existencia,
+                mantenimiento, y cumplimiento de la relación jurídica entre El
+                Foro y el Titular, por lo que, en caso de no contar con esta
+                información, no estaremos en posibilidad de dar cumplimiento a
+                esta relación.
+            </p>
+            <p class="mb-6">
+                Toda vez que las finalidades (v) y (vi) de los compradores; las
+                (iv) y (v) de los interesados en comprar; (iii), (iv) y (v) para
+                Usuarios; así como la (i) para Visitantes, no son necesarias
+                para que exista una relación jurídica entre El Foro y el
+                Titular, este último podrá solicitar que dejemos de utilizar sus
+                Datos para efectos de dicha finalidad. Para ello, el Titular
+                deberá dirigirnos un escrito haciendo constatar lo anterior, al
+                correo electrónico señalado en el Apartado V; o bien, deberá
+                llenar la información requerida en el formulario que se
+                encuentra al calce de este Aviso de Privacidad y enviarnos al
+                correo electrónico al que se hace referencia en este párrafo.
+            </p>
+
+            <h2 class="text-xl font-bold mb-4">
+                IV. Transferencias que haremos de los Datos
+            </h2>
+            <p class="mb-6">
+                Para poder cumplir con la finalidad del presente Aviso de
+                Privacidad, Nosotros podremos transferir sus Datos, a personas
+                físicas y morales, quienes serán prestadores de servicios de El
+                Foro en materia legal, contable y/o consultoras y
+                desarrolladoras de negocios. En consecuencia, no será necesario
+                su consentimiento.
+            </p>
+            <p class="mb-6">
+                El Foro también podrá transferir sus Datos a personas físicas y
+                morales, quienes serán prestadores de servicios de El Foro en
+                materia de marketing y publicidad. En estos casos, Usted podrá
+                oponerse a esta transferencia conforme al procedimiento
+                establecido en el Apartado V de este Aviso de Privacidad; o
+                bien, deberá llenar la información requerida en el formulario
+                que se encuentra al calce de este Aviso de Privacidad y
+                enviárnoslo al correo electrónico.
+            </p>
+            <p class="mb-6">
+                Las transferencias descritas en este Apartado IV, podrán
+                realizarse tanto de manera nacional, como internacional.
+            </p>
+            <p class="mb-6">
+                El Foro manifiesta que los Datos no serán objeto de
+                transferencia adicional alguna, salvo que sea necesario para el
+                cumplimiento de las obligaciones derivadas de la relación
+                jurídica que mantiene con el Titular; o bien, se actualice
+                alguna de las excepciones previstas en el artículo 37 de la Ley,
+                en cuyo caso El Foro dará a conocer un nuevo aviso de privacidad
+                al Titular, en cumplimiento a lo establecido en los artículos 68
+                del Reglamento y el Decimosegundo de los Lineamientos.
+            </p>
+
+            <h2 class="text-xl font-bold mb-4">V. Derechos del Titular</h2>
+            <h3 class="text-lg font-bold mb-3">A) Derechos ARCO</h3>
+            <p class="mb-6">
+                Usted tendrá derecho, en todo momento, a: (i) Acceder a sus
+                Datos que obran en las bases de datos de El Foro; (ii)
+                Rectificar sus Datos en los casos en que la información sea
+                inexacta o incompleta: (iii) Cancelar sus Datos cuando haya
+                finalizado la relación jurídica con El Foro; y (iv) Oponerse al
+                tratamiento de sus Datos para finalidades específicas, (en lo
+                sucesivo, los <strong>"Derechos ARCO"</strong>).
+            </p>
+            <p class="mb-6">
+                Para el ejercicio de los Derechos ARCO, deberá dirigirnos su
+                respectiva solicitud por escrito y en formato electrónico al
+                Área de Atención a Clientes de EL FORO, cuyo correo electrónico
+                es el siguiente: contacto@El Foro.com.
+            </p>
+            <p class="mb-6">
+                La solicitud para ejercer los Derechos ARCO deberá contener, y
+                estar acompañada de lo siguiente: (i) el nombre del Titular;
+                (ii) su correo electrónico, domicilio y/o cualquier otro medio
+                para comunicarle la respuesta a su solicitud; (iii) los
+                documentos oficiales que acrediten la identidad del Titular o,
+                en su caso, la representación legal de éste; (iv) una
+                descripción clara y precisa de los Datos respecto de los que se
+                busca ejercer alguno de los Derechos ARCO; (v) cualquier otro
+                elemento o documento que facilite la localización de los Datos;
+                y (vi) en su caso, exhibir la documentación que ampare la
+                procedencia de las correcciones que solicita.
+            </p>
+            <p class="mb-6">
+                Una vez enviada la solicitud para ejercer los Derechos ARCO, el
+                Titular deberá confirmar su recepción con el Área Administrativa
+                de EL FORO, al número telefónico +52 55.40.70.10.18. El Área de
+                Protección de Datos Personales del EL FORO, tendrá el plazo de
+                20 (veinte) días hábiles para dar respuesta sobre la
+                procedencia, o improcedencia de su solicitud. En caso de que
+                resulte procedente su solicitud, el área respectiva tendrá 15
+                (quince) días hábiles para conceder lo solicitado. Lo anterior
+                con sujeción a los plazos previstos en la Ley, los cuales podrán
+                ser ampliados una sola vez por un periodo igual, siempre y
+                cuando así lo justifiquen las circunstancias del caso.
+            </p>
+            <p class="mb-6">
+                En caso de que la información no sea clara o suficiente, el área
+                correspondiente le requerirá lo necesario, lo que deberá
+                desahogar en el plazo de 5 (cinco) días hábiles, en caso de no
+                hacerlo en tiempo y forma, se tendrá por no presentada la
+                solicitud. Por otro lado, en los supuestos en que el Titular
+                ejercite su derecho de acceso a la información, El Foro dará
+                cumplimiento poniendo a disposición del Titular los Datos
+                correspondientes, expidiendo copias simples, documentos
+                electrónicos o cualquier otro medio que permita el Titular
+                acceder a sus Datos.
+            </p>
+
+            <h3 class="text-lg font-bold mb-3">
+                B) Revocación del consentimiento; y Limitación al uso o
+                divulgación de Datos
+            </h3>
+            <p class="mb-6">
+                El Titular también podrá revocar, en cualquier momento, el
+                consentimiento que haya otorgado a El Foro para el tratamiento
+                de sus Datos, así como solicitar que se limite el uso y
+                divulgación de los mismos, siempre y cuando no lo impida una
+                disposición legal y/o su petición no sea procedente en términos
+                de la Ley. Para tales fines, el Titular deberá presentar una
+                solicitud por escrito y en formato electrónico al Área de
+                Atención a Clientes de EL FORO, al siguiente correo electrónico:
+                contacto@foromenopausia.com
+            </p>
+            <p class="mb-6">
+                La solicitud deberá contener (i) el nombre del Titular; (ii)
+                domicilio o correo electrónico para recibir notificaciones; así
+                como (iii) los documentos que acrediten su identidad o las
+                facultades del representante legal del Titular. La respuesta a
+                su solicitud le será notificada en el domicilio o correo
+                electrónico que hubiera señalado para tal efecto y, de ser
+                procedente la misma, se hará efectiva en un plazo de 15 días
+                posteriores a la fecha en que se comunicó la respuesta. Lo
+                anterior con sujeción a los plazos previstos en la Ley, los
+                cuales podrán ser ampliados una sola vez por un periodo igual,
+                siempre y cuando así lo justifiquen las circunstancias del caso.
+            </p>
+            <p class="mb-6">
+                No obstante, el Titular podrá obtener más información acerca del
+                estado que guarda su solicitud y del plazo de respuesta de la
+                misma, contactando a El Foro o enviando una petición al
+                mencionado correo electrónico, donde además podrán atender
+                cualquier aclaración o duda que pudiera tener el Titular
+                respecto al tratamiento de sus Datos y de sus respectivos
+                derechos contenidos en este Aviso de Privacidad.
+            </p>
+            <p class="mb-6">
+                Si el Titular deseara ejercer su derecho para limitar el uso o
+                divulgación de sus Datos y/o para dejar de recibir el boletín de
+                noticias de El Foro, podrá darse de bajo del mismo en cualquier
+                momento mediante la opción "unsubscribe" que aparece al final de
+                todos sus comunicados. La divulgación de sus Datos se encuentra
+                limitada a las transferencias referidas en el Apartado IV
+                anterior, las cuales son indispensables para procesar las
+                donaciones y emitir las facturas requeridas por el Titular.
+            </p>
+            <p class="mb-6">
+                De manera adicional, el Titular también podrá acudir o solicitar
+                vía telefónica su inscripción al Registro Público de
+                Consumidores, y/o al Registro Público para Evitar Publicidad,
+                conforme a lo que provea al respecto la Procuraduría Federal del
+                Consumidor, a través de la legislación aplicable. También el
+                Titular podrá acudir al Registro Público de Usuarios previsto
+                por la Ley de Protección y Defensa al Usuario de Servicios
+                Financieros, a efecto de limitar el uso de los datos personales
+                en posesión de los particulares.
+            </p>
+
+            <h2 class="text-xl font-bold mb-4">
+                VI. Medios remotos y tecnologías
+            </h2>
+            <p class="mb-6">
+                Si por cualquier razón Usted nos proporciona sus Datos a través
+                de medios electrónicos, incluyendo el Sitio y otros canales de
+                venta; Usted entiende, y acepta que:
+            </p>
+            <p class="mb-6">
+                I. El Sitio y canales de venta pueden incluir enlaces a sitios
+                web de terceros que, en caso de acceder, ocasionará que se
+                abandone nuestro Sitio o canales de venta, por lo cual no
+                asumimos ninguna responsabilidad en relación con los sitios web
+                de terceros;
+            </p>
+            <p class="mb-6">
+                II. El Sitio y los canales de venta pueden incluir enlaces a
+                sitios que administran redes sociales, en cuyo caso Usted acepta
+                que, al proporcionar cualquier tipo de información, incluso sus
+                Datos en dichos sitios, ocasionará que la misma pueda ser leída,
+                vista, accedida, retransmitida, y tratada por cualquier persona,
+                liberándonos de toda responsabilidad; y
+            </p>
+            <p class="mb-6">
+                III. El Sitio, los canales de venta y nuestros sistemas,
+                incluyendo la Plataforma, pueden recopilar datos adicionales a
+                los que Usted nos proporcione, como lo son el tipo de navegador,
+                el sistema operativo, las páginas de internet visitadas, la
+                dirección IP, etcétera. Lo anterior se lleva a cabo a través del
+                uso de cookies o web beacons, propias y de terceros. En ningún
+                caso las cookies identifican personalmente a los usuarios del
+                Sitio y de la App. Las cookies podrán deshabilitarse de acuerdo
+                con lo señalado en la configuración sobre uso de cookies del
+                navegador o servicio de internet que el Titular utiliza. No
+                obstante, le informamos que, el bloqueo por parte del Titular de
+                todas las cookies puede provocar el bloqueo o afectación total o
+                parcial en el acceso y uso del Sitio.
+            </p>
+            <p class="mb-6">
+                Por otro lado, utilizamos el servicio denominado "Google
+                Analytics" para analizar la forma en que los usuarios utilizan
+                el Sitio, incluyendo la frecuencia con la que se visita, los
+                sitios visitados anteriormente y las secciones visitadas, esta
+                información sólo se utiliza para mejorar el Sitio y nuestro
+                servicio. La posibilidad de utilizar y almacenar su información
+                a través de Google Analytics cuando visita el Sitio, se rige por
+                los términos y políticas de privacidad de Google Analytics y
+                Google. Las políticas de privacidad de Google Analytics se
+                encuentran en www.google.com/policies/privacy/partners/.
+            </p>
+            <p class="mb-6">
+                Asimismo, utilizamos el servicio denominado "Facebook Ads" para
+                mejorar la comunicación con los donantes potenciales que están
+                interesados en la causa, por lo que el Sitio tiene instalada la
+                herramienta "Pixel de Facebook", lo que nos permite mejorar
+                nuestra comunicación a través de anuncios. La posibilidad de
+                utilizar y almacenar su información a través de Facebook se rige
+                por los términos y políticas de privacidad de Facebook. Los
+                términos y políticas de privacidad para Facebook se encuentran
+                en https://www.facebook.com/policies/ads/#, en la parte inferior
+                de la misma.
+            </p>
+
+            <h2 class="text-xl font-bold mb-4">
+                VII. Modificaciones al Aviso de Privacidad
+            </h2>
+            <p class="mb-6">
+                El presente Aviso de Privacidad podrá ser modificado por
+                Nosotros, tanto para guardar congruencia con los ordenamientos
+                legales aplicables, a petición de las autoridades competentes,
+                y/o según lo consideremos conveniente.
+            </p>
+            <p class="mb-6">
+                En tanto no modifiquemos nuestra identidad, requiramos de Usted
+                más datos de los aquí mencionados, modifiquemos la finalidad del
+                presente Aviso de Privacidad, Y/O cambien las condiciones de
+                transferencia, Usted entiende y acepta que la forma de notificar
+                cualquier cambio a este Aviso de Privacidad, será a través de su
+                publicación en el Sitio. Para los casos en que su consentimiento
+                sea necesario por los cambios realizados a este Aviso de
+                Privacidad, Nosotros le haremos llegar la notificación
+                correspondiente a cualquiera de los medios de contacto que Usted
+                nos haya brindado.
+            </p>
+            <p class="mb-6">
+                Se entenderá que Usted acepta las modificaciones al Aviso de
+                Privacidad hasta que no recibamos cualquier comunicación de
+                Usted en sentido opuesto. Es su obligación visitar
+                periódicamente el Sitio y/o la App a fin de verificar la versión
+                más actual de nuestro Aviso de Privacidad.
+            </p>
+            <p class="mb-6">
+                El Aviso de Privacidad se regirá por las leyes de la Ciudad de
+                México sin tener en cuenta sus disposiciones sobre conflictos de
+                leyes. Todas las disputas, reclamaciones y causas de acción que
+                surjan de o en relación con el Aviso de Privacidad se resolverán
+                individualmente, sin recurrir a ningún tipo de acción colectiva.
+                Cualquier acción o litigio relacionado con la impugnación se
+                llevará a cabo exclusivamente en los tribunales federales o
+                locales con sede en la Ciudad de México, México, y cada Titular
+                acuerda expresamente en la jurisdicción de dichos tribunales y
+                renuncia a todas las defensas de falta de jurisdicción y foro
+                inconveniente con respecto a dichos tribunales. Cada Titular
+                acepta la notificación del proceso por correo u otro método
+                aceptable según las leyes de la Ciudad de México.
+            </p>
+            <p class="mb-6">
+                El presente Aviso de Privacidad está hecho en idioma español.
+            </p>
+            <p class="mb-6">
+                <strong>Última actualización:</strong> 7 de agosto de 2025.
+            </p>
+
+            <p class="mb-6">
+                [ ] El Titular manifiesta su negativa para que sus Datos sean
+                tratados para el envío de información de eventos, productos y
+                servicios, incluyendo ofertas y promociones por El Foro, sus
+                socios o establecimientos asociados, vía mensajería instantánea
+                de WhatsApp o por correo electrónico, derivado de la suscripción
+                al boletín de noticias de El Foro.
+            </p>
+            <p class="mb-6">
+                [ ] El Titular manifiesta su negativa para que sus Datos sean
+                transferidos a prestadores de servicios de El Foro en materia de
+                marketing y publicidad, en términos del párrafo segundo del
+                Apartado IV del presente Aviso de Privacidad.
+            </p>
+        </div>
+    </div>
+</section>

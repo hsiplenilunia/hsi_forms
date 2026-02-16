@@ -1,0 +1,462 @@
+---
+import { Image } from "astro:assets";
+import AgendaIsland, { type AgendaItem } from "../islands/AgendaIsland";
+
+/* const eventos = [
+
+ 
+  {
+    tipo: "Meditación",
+    hora: "--",
+    titulo: "Meditación",
+    participantes: [
+      {
+        nombre: "Sophie Sosa",
+        cargo: "Directora de Fundación Medita México",
+      },
+    ],
+    moderador: {
+      
+    },
+    color: "purple",
+  },
+  {
+    tipo: "PANEL",
+    hora: "08:30-09:00",
+    titulo: "Nombre de la conferencia",
+    participantes: [
+      {
+        nombre: "Dr. Juan Pérez Dominguez",
+        cargo: "Director General del Hospital de Ejemplo.",
+      },
+    ],
+    moderador: {
+      nombre: "Mtra. Maribel Ramírez Coronel",
+      cargo: "Directora de Hospitales sin infecciones.",
+    },
+    color: "guacamole",
+  },
+]; */
+
+const eventos: AgendaItem[] = [
+  {
+    tipo: "Meditación",
+    hora: "--",
+    titulo: "Meditación",
+    participantes: [
+      {
+        nombre: "Sophie Sosa",
+        cargo: "Directora de Fundación Medita México",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "guacamole",
+  },
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "Habitar la menopausia, no sobrevivirla",
+    participantes: [
+      {
+        nombre: "Dra. Paloma de la Torre",
+        cargo: "Ginecobstetra, Especialista en climaterio y menopausia",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+  },
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "Menopausia sin silencios",
+    participantes: [
+      {
+        nombre: "Dra. Claudia Rampazzo Presentada por: Exeltis y Turnover",
+        cargo: "Médico cirujano, sexóloga clínica y psicoterapeuta familiar y de pareja",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+    patrocinador: [
+      "exeltis",
+      "turnover",
+    ],
+  },
+  {
+    tipo: "Taller express de escritura",
+    hora: "--",
+    titulo: "La segunda mitad se escribe diferente",
+    participantes: [
+      {
+        nombre: "Lilyán de la Vega",
+        cargo: "Coach y escritora con enfoque de género",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "capuchino",
+  },
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "Cuerpo en cambio: Comprendiendo la incontinencia y cuidando el piso pélvico",
+    participantes: [
+      {
+        nombre: "Dra. Edna Cortés",
+        cargo: "Ginecóloga y especialista en piso pélvico",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+  },
+  
+  {
+    tipo: "Receso",
+    hora: "--",
+    titulo: "RECESO",
+    participantes: [
+      {
+        nombre: "",
+        cargo: "",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "guacamole",
+  },
+
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "Bochornos y su impacto en la calidad de vida de las mujeres",
+    participantes: [
+      {
+        nombre: "Dra. Erandi Fernández Presentado por: Astellas",
+        cargo: "Especialista en salud femenina de Astellas Pharma",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+     patrocinador: [
+      "lelo",
+      "intimina",
+    ],
+  },
+  
+
+
+  {
+    tipo: "Power talk",
+    hora: "--",
+    titulo: "Medicina con M de Mujer Usa la genética a tu favor",
+    participantes: [
+      {
+        nombre: "Juana Ramírez",
+        cargo: "Presidenta y Fundadora de Grupo SOHIN",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+  
+
+  {
+    tipo: "Plática",
+    hora: "--",
+    titulo: "Habitando mi cuerpo con amor",
+    participantes: [
+      {
+        nombre: "Karla Barajas",
+        cargo: "Autora bestseller y creadora de contenido",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+
+
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "Nova Pause: sexualidad integral después de los 40",
+    participantes: [
+      {
+        nombre: "Dra. Mari Mar Álvarez",
+        cargo: "Cirujana Plástica, CEO de Nova House",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+  },
+
+
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "Reactivando el deseo",
+    participantes: [
+      {
+        nombre: "Fer Zárate Presentada por: Lelo e Intimina",
+        cargo: "Sexóloga clínica y Psicóloga",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+  },
+
+  {
+    tipo: "Pausa",
+    hora: "--",
+    titulo: "PAUSA ACTIVA",
+    participantes: [
+      {
+        nombre: "",
+        cargo: "",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "guacamole",
+  },
+
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "Tres hacks de nutrición para la menopausia",
+    participantes: [
+      {
+        nombre: "María del Carmen Mondragón Presentada por: LALA",
+        cargo: "Directora de nutrición Grupo Lala",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+  },
+
+
+  {
+    tipo: "Power talk",
+    hora: "--",
+    titulo: "Menopausia y trabajo: de lo invisible a lo imparable ",
+    participantes: [
+      {
+        nombre: "Mamen Díaz",
+        cargo: "COO Sin Reglas",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+
+  {
+    tipo: "Power talk",
+    hora: "--",
+    titulo: "Menopausia plena, nuevo enfoque en políticas públicas",
+    participantes: [
+      {
+        nombre: "Marcela Vázquez",
+        cargo: "Presidenta y Directora General de Mujer, Hormonía y Salud",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+
+  {
+    tipo: "Power talk",
+    hora: "--",
+    titulo: "45-55 Perspectiva desde la salud ocupacional",
+    participantes: [
+      {
+        nombre: "Dra. Diana Hernández Presentada por: Salud Áurea",
+        cargo: "Gerente de Operaciones y Salud Ocupacional en Salud Áurea",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+
+
+  {
+    tipo: "Pausa",
+    hora: "--",
+    titulo: "COMIDA",
+    participantes: [
+      {
+        nombre: "",
+        cargo: "",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "guacamole",
+  },
+
+  {
+    tipo: "Charla",
+    hora: "--",
+    titulo: "¿Cómo me cuido en la menopausia? Opciones terapéuticas",
+    participantes: [
+      {
+        nombre: "Dra. Edith Cervantes, Maribel Ramírez Coronel",
+        cargo: "Ginecobstetra, especialista en biología de la reproducción Periodista especializada en salud pública",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "Autocuidado en menopausia",
+    participantes: [
+      {
+        nombre: "Dr. Víctor Mundo Presentado por: Bayer",
+        cargo: "Director Médico División Consumer Health de Bayer",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+  },
+
+
+  {
+    tipo: "Power Talk",
+    hora: "--",
+    titulo: "Menopausia XXI: una nueva mirada, más grande que el género y la edad",
+    participantes: [
+      {
+        nombre: "Milagros Kirpach",
+        cargo: "Co-Fundadora y Directora Ejecutiva de No Pausa",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+
+  {
+    tipo: "Power Talk",
+    hora: "--",
+    titulo: "Y después de la menopausia ¿qué?",
+    participantes: [
+      {
+        nombre: "Paty Kelly",
+        cargo: "Periodista",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+
+  {
+    tipo: "Conferencia",
+    hora: "--",
+    titulo: "No eres tú, son tus hormonas",
+    participantes: [
+      {
+        nombre: "Bernard Kizer",
+        cargo: "Investigador experto en hormonas femeninas",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+  },
+
+  {
+    tipo: "",
+    hora: "--",
+    titulo: "ACTIVIDADES Y EXPERIENCIAS",
+    participantes: [
+      {
+        nombre: "",
+        cargo: "",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "guacamole",
+  },
+
+  {
+    tipo: "Sonoterapia",
+    hora: "--",
+    titulo: "Vibrar en plenitud",
+    participantes: [
+      {
+        nombre: "Primavera Rubio",
+        cargo: "Sonoterapeuta",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "purple",
+  },
+
+  {
+    tipo: "Ceremonia holística",
+    hora: "--",
+    titulo: "El ritual de la nueva etapa. Danza y movimiento Raíz y alas",
+    participantes: [
+      {
+        nombre: "Adi Shakti",
+        cargo: "Terapeuta holística, bioenergética y sanación femenina",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "pink-fresh",
+  },
+
+  {
+    tipo: "Taller",
+    hora: "--",
+    titulo: "Tapping",
+    participantes: [
+      {
+        nombre: "Karla Barajas",
+        cargo: "Autora bestseller y creadora de contenido",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "capuchino",
+  },
+
+  {
+    tipo: "Taller",
+    hora: "--",
+    titulo: "Vulva Care",
+    participantes: [
+      {
+        nombre: "Fernanda Zárate",
+        cargo: "Sexóloga clínica y Psicóloga",
+      },
+    ],
+    moderador: { nombre: "", cargo: "" },
+    color: "capuchino",
+  },
+];
+
+const agenda_items = {
+  items: eventos,
+};
+// Componente de sección de precios para el evento
+---
+
+<section
+  class="landing-section bg-pink-fresh min-h-screen w-screen flex items-center justify-center pt-16 px-2 relative overflow-y-hidden"
+>
+  <div class="flex flex-col w-full mx-[10%]">
+    <div class="flex mb-12">
+      <div class="flex flex-col justify-end">
+        <h2 class="text-5xl md:text-5xl font-black text-black-text mb-0">
+          AGENDA
+        </h2>
+        <p class="text-xl font-bold text-black-text">18 DE OCTUBRE 2026</p>
+      </div>
+      <div class="flex grow pl-11">
+        <!-- <img src="/logos/logo_morado_menopausia.png" alt="logo plenilunia en mi menopausia color morado" /> -->
+      </div>
+    </div>
+    
+    <!-- <h3 class="text-4xl font-extrabold w-full text-center text-purple-text">Actividades en Auditorio</h3> -->
+    <!-- <AgendaIsland client:load items={eventos as AgendaItem[]} /> -->
+     <div class="flex justify-center">
+          <h2 class="text-2xl  uppercase font-medium mb-4 md:mb-0 ">Estamos trabajando en el programa, te mantendremos informada.</h2>
+    </div>
+  </div>
+  
+</section>

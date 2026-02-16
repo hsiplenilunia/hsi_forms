@@ -1,0 +1,57 @@
+---
+const texto = `En Q’nice no solo vendemos helados.
+Creamos momentos que se sienten.
+Todo lo que hacemos parte de tres ingredientes
+que nos definen, como una receta secreta que no se anota, se vive.`;
+import helado from "../assets/Nosotros.png";
+---
+
+<section
+  id="nosotros"
+  class="relative w-full min-h-screen max-h-screen bg-gradient-to-b from-[#DFCCE5] to-[#6E3084]/80 via-[#DFCCE5] to-200% overflow-hidden"
+>
+  <!-- BANDA ROSA CLARO CON H1 -->
+  <div class="w-full bg-[#F7CDE2] py-12 px-6 mt-20">
+    <h1
+      class="text-5xl lg:text-7xl font-serif text-[#3D1F1F] max-w-7xl mx-auto"
+    >
+      Nuestra esencia
+    </h1>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div
+    class="relative z-10 flex flex-col lg:flex-row justify-between items-center w-full max-w-7xl mx-auto px-6 py-16 gap-12"
+  >
+    <!-- BLOQUE TEXTO EN FORMA ORGÁNICA -->
+    <!-- BLOQUE TEXTO EN FORMA ORGÁNICA -->
+    <div class="flex-1 flex justify-start">
+      <div
+        class="relative px-8 py-12 text-[#3D1F1F] text-lg leading-relaxed max-w-2xl w-full"
+        style="
+      background-image: url('/paragraphBgEsencia.png');
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: left center;
+      min-height: 375px;
+    "
+      >
+        <p class="max-w-[80%] ml-0 pl-24 pt-12 text-center">
+          {texto}
+        </p>
+      </div>
+    </div>
+
+    <!-- IMAGEN HELADO -->
+    <div
+      class="flex-1 hidden lg:flex justify-end items-end lg:h-[280vh] absolute z-20 lg:top-[-210vh] 2xl:top-[-205vh] lg:right-0 2xl:right-[-21%]"
+    >
+      <img
+        src="heladoNosotros.png"
+        alt="Helado Q'nice"
+        class="lg:h-[100vh] lg:max-h-[720px] 2xl:max-h-[100vh] object-contain drop-shadow-xl"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>

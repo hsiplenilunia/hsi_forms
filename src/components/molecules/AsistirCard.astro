@@ -1,0 +1,395 @@
+---
+import { Image } from 'astro:assets';
+
+// AsistirCard.astro - Interactive card with two distinct visual states
+export interface Props {
+  title: string;
+  descriptiveContent: string;
+  imageState1Src: string | ImageMetadata;
+  imageAlt: string;
+  bgColorClass: string;
+  variant?: 'experts' | 'program' | 'experiences';
+}
+
+const { 
+  title, 
+  descriptiveContent, 
+  imageState1Src, 
+  imageAlt, 
+  bgColorClass,
+  variant = 'experts'
+} = Astro.props;
+
+// Generate unique IDs for accessibility
+const cardId = `card-${Math.random().toString(36).substr(2, 9)}`;
+const state1Id = `state1-${cardId}`;
+const state2Id = `state2-${cardId}`;
+const buttonId = `button-${cardId}`;
+---
+
+<article 
+  class={`
+    relative overflow-hidden rounded-3xl shadow-xl transition-all duration-500 ease-in-out
+    w-full max-w-sm mx-auto h-auto min-h-[550px] md:min-h-[450px]
+    ${bgColorClass}
+    hover:shadow-2xl hover:scale-[1.02]
+    group cursor-pointer
+  `}
+  id={cardId}
+  data-variant={variant}
+>
+
+  <!-- STATE 1: Collapsed (Image + Title) -->
+  <div 
+    id={state1Id}
+    class="card-state state-1 absolute inset-0 z-10 opacity-100 transition-all duration-500 ease-in-out"
+  >
+    <div class="relative h-full flex flex-col p-6 pb-0">
+      <!-- Large Title at top - CENTERED -->
+      <header class="flex-shrink-0 mb-6">
+        <h2 class="text-3xl md:text-3xl lg:text-4xl font-bold leading-tight text-center">
+          {title}
+        </h2>
+      </header>
+      
+      <!-- Main Image - larger and more prominent -->
+      <div class="flex-grow flex items-end justify-center relative">
+        <figure class="relative">
+          <!-- Organic background shape for image 
+          <div 
+            class="absolute inset-0 bg-apple rounded-full transform rotate-12 scale-125 blur-sm opacity-80"
+            aria-hidden="true"
+          ></div>-->
+          
+          <!-- Main prominent image -->
+          {typeof imageState1Src === 'object' ? (
+            <Image
+              src={imageState1Src}
+              alt={imageAlt}
+              class="relative z-10 w-48 h-60 md:w-[215px] md:h-[350px] object-contain"
+              width={215}
+              height={350}
+              loading="lazy"
+            />
+          ) : (
+            <img
+              src={imageState1Src}
+              alt={imageAlt}
+              class="relative z-10 w-48 h-60 md:w-[215px] md:h-[328px] object-contain"
+              width="215"
+              height="328"
+              loading="lazy"
+            />
+          )}
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATE 2: Expanded (Descriptive Content Only) -->
+  <div 
+    id={state2Id}
+    class="card-state state-2 absolute inset-0 z-10 opacity-0 transition-all duration-500 ease-in-out"
+  >
+    <div class="relative h-full flex flex-col p-6">
+      <!-- Title for State 2 - CENTERED and DIFFERENT SIZE -->
+      <header class="flex-shrink-0 mb-6">
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-bold leading-tight text-center">
+          {title}
+        </h2>
+      </header>
+      
+      <!-- Descriptive content takes remaining space -->
+      <div class="flex-grow flex items-center justify-center">
+        <div class="w-full max-w-xs">
+          <div class="text-black-text text-sm md:text-base leading-relaxed space-y-3">
+            {descriptiveContent.split('.').filter(item => item.trim()).map(item => (
+              <p class="flex items-start text-left">
+                <span class="text-black-text mr-2 flex-shrink-0 mt-1">•</span>
+                <span>{item.trim()}.</span>
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Action Button -->
+  <button
+    id={buttonId}
+    class="
+      md:hidden
+      expand-btn
+      absolute bottom-6 right-6 z-20
+      w-12 h-12 bg-red-600 text-light-text rounded-full
+      flex items-center justify-center
+      transition-all duration-300 ease-in-out
+      hover:bg-purple-text hover:bg-opacity-40 hover:scale-110
+      focus:outline-none focus:ring-2 focus:ring-apple focus:ring-opacity-50
+      shadow-lg
+    "
+    aria-controls={`${state1Id} ${state2Id}`}
+    aria-expanded="false"
+    aria-label="Expandir información de la tarjeta"
+    title="Expandir información"
+  >
+    <span class="button-icon text-xl font-bold transition-transform duration-300">+</span>
+  </button>
+</article>
+
+<style>
+  /* Two-state card animation system */
+  .card-state {
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* State 1 (Default - Collapsed) */
+  .state-1 {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  /* State 2 (Expanded) */
+  .state-2 {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+  
+  /* When card is expanded */
+  .card-expanded .state-1 {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+  
+  .card-expanded .state-2 {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  /* Variant-specific styling */
+  /* Experts Variant - Light Purple */
+  [data-variant="experts"] .state-1 h2 {
+    color: #7758AC; /* purple-text */
+  }
+  
+  [data-variant="experts"] .state-2 h2 {
+    color: #7758AC; /* purple-text */
+  }
+  
+  [data-variant="experts"] .state-2 .text-black-text {
+    color: #191818; /* black-text */
+  }
+  
+  /* Program Variant - Apple Green */
+  [data-variant="program"] .state-1 h2 {
+    color: #191818; /* black-text for better contrast on green */
+  }
+  
+  [data-variant="program"] .state-2 h2 {
+    color: #191818; /* black-text */
+  }
+  
+  [data-variant="program"] .state-2 .text-black-text {
+    color: #191818; /* black-text */
+  }
+  
+  /* Experiences Variant - Dark Purple */
+  [data-variant="experiences"] .state-1 h2 {
+    color: rgb(204, 247, 80); /* apple - for contrast on dark purple */
+  }
+  
+  [data-variant="experiences"] .state-2 h2 {
+    color: rgb(204, 247, 80); /* apple - for contrast on dark purple */
+  }
+  
+  [data-variant="experiences"] .state-2 .text-black-text {
+    color: rgb(250, 249, 249); /* light-text for contrast on dark purple */
+  }
+  
+  /* Button icon animation */
+  .button-icon {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .expand-btn.expanded .button-icon {
+    transform: rotate(45deg);
+  }
+  
+  /* Desktop hover effects */
+  @media (min-width: 768px) {
+    .group:hover.card-collapsed .state-1 {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
+    
+    .group:hover.card-collapsed .state-2 {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    
+    .group:hover.card-collapsed .expand-btn .button-icon {
+      transform: rotate(45deg);
+    }
+    
+    .group:hover.card-collapsed .expand-btn {
+      background-color: rgb(114, 68, 180); /* purple-text */
+    }
+  }
+  
+  /* Mobile-specific styles - disable hover effects */
+  @media (max-width: 767px) {
+    .group:hover.card-collapsed .state-1 {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    
+    .group:hover.card-collapsed .state-2 {
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+    }
+    
+    .group:hover.card-collapsed .expand-btn .button-icon {
+      transform: none;
+    }
+  }
+  
+  /* Enhanced visual effects */
+  .card-state {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Smooth background transitions */
+  article {
+    transition: all 0.3s ease-in-out;
+  }
+</style>
+
+<script>
+  // Two-state card interaction system
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('article[data-variant]');
+    
+    cards.forEach(card => {
+      const button = card.querySelector('.expand-btn') as HTMLButtonElement;
+      const state1 = card.querySelector('.state-1') as HTMLElement;
+      const state2 = card.querySelector('.state-2') as HTMLElement;
+      const buttonIcon = button?.querySelector('.button-icon') as HTMLElement;
+      
+      if (!button || !state1 || !state2 || !buttonIcon) return;
+      
+      let isExpanded = false;
+      
+      // Initialize card state
+      card.classList.add('card-collapsed');
+      
+      // Toggle function for complete state swap
+      function toggleCardState() {
+        isExpanded = !isExpanded;
+        
+        // Update ARIA attributes
+        button.setAttribute('aria-expanded', isExpanded.toString());
+        
+        // Update button label and title
+        const action = isExpanded ? 'Contraer' : 'Expandir';
+        button.setAttribute('aria-label', `${action} información de la tarjeta`);
+        button.setAttribute('title', `${action} información`);
+        
+        // Update visual state classes
+        if (isExpanded) {
+          card.classList.remove('card-collapsed');
+          card.classList.add('card-expanded');
+          button.classList.add('expanded');
+          buttonIcon.textContent = '−';
+        } else {
+          card.classList.remove('card-expanded');
+          card.classList.add('card-collapsed');
+          button.classList.remove('expanded');
+          buttonIcon.textContent = '+';
+        }
+      }
+      
+      // Button click event
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        enhancedToggleCardState();
+      });
+      
+      // Keyboard support
+      button.addEventListener('keydown', function(e: KeyboardEvent) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          enhancedToggleCardState();
+        }
+      });
+      
+      // Enhanced mobile detection
+      const isMobile = () => window.innerWidth < 768;
+      
+      // Desktop hover events
+      card.addEventListener('mouseenter', function() {
+        if (!isMobile() && !isExpanded) {
+          // Hover effect is handled by CSS for better performance
+          buttonIcon.style.transform = 'rotate(45deg)';
+        }
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        if (!isMobile() && !isExpanded) {
+          // Reset hover effect
+          buttonIcon.style.transform = '';
+        }
+      });
+      
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        if (isMobile()) {
+          // Reset hover effects on mobile
+          if (!isExpanded) {
+            buttonIcon.style.transform = '';
+          }
+        }
+      });
+      
+      // Enhanced accessibility - announce state changes
+      const announceStateChange = () => {
+        const announcement = isExpanded ? 
+          'Información detallada visible' : 
+          'Vista resumida de la tarjeta';
+        
+        // Create a temporary element for screen reader announcement
+        const announcer = document.createElement('div');
+        announcer.setAttribute('aria-live', 'polite');
+        announcer.setAttribute('aria-atomic', 'true');
+        announcer.className = 'sr-only';
+        announcer.textContent = announcement;
+        
+        card.appendChild(announcer);
+        
+        // Remove after announcement
+        setTimeout(() => {
+          if (announcer.parentNode) {
+            announcer.parentNode.removeChild(announcer);
+          }
+        }, 1000);
+      };
+      
+      // Enhanced toggle function with accessibility
+      const enhancedToggleCardState = () => {
+        toggleCardState();
+        announceStateChange();
+      };
+    });
+  });
+</script>

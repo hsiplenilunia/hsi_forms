@@ -1,0 +1,76 @@
+---
+import SpeakerOrganicBg from "../atoms/SpeakerOrganicBg.astro";
+import NotasCard from "../molecules/NotasCard.astro";
+import RecursosGrid from "../molecules/RecursosGrid.astro";
+
+// Define type for card variants
+interface CardData {
+    // State 1
+    imageSrc: string;
+    imageAlt: string;
+    // State 2
+    title: string;
+    underlinedText: string;
+    link?: string; // Optional link for more info
+}
+
+const cardData: CardData[] = [
+    
+
+    {
+        title: "MÁS DE 40 SÍNTOMAS QUE AFECTAN LA CALIDAD DE VIDA DE LAS MUJERES",
+        underlinedText: "Mujer Infoma",
+        imageSrc:
+            "https://placehold.co/215x328/D8BFD8/7B68EE?text=Expertos+Nivel+1",
+        imageAlt:
+            "MÁS DE 40 SÍNTOMAS QUE AFECTAN LA CALIDAD DE VIDA DE LAS MUJERES - Mujer Infoma",
+    },
+    {
+        title: "INDISPENSABLE VISIBILIZAR MENOPAUSIA PARA AVANZAR EN AGENDA DE SALUD",
+        underlinedText: "Agencia Quartín México",
+        imageSrc:
+            "https://placehold.co/215x328/D8BFD8/7B68EE?text=Expertos+Nivel+1",
+        imageAlt:
+            "INDISPENSABLE VISIBILIZAR MENOPAUSIA PARA AVANZAR EN AGENDA DE SALUD - Agencia Quartín México",
+    },
+    {
+        title: "CLIMATERIO Y MENOPAUSIA, RETO PARA MUJERES",
+        underlinedText: "Revista Factor RH+",
+        imageSrc:
+            "https://placehold.co/215x328/D8BFD8/7B68EE?text=Expertos+Nivel+1",
+        imageAlt:
+            "CLIMATERIO Y MENOPAUSIA, RETO PARA MUJERES - Revista Factor RH+",
+    },
+    {
+        title: "PARA AVANZAR EN UNA AGENDA DE SALUD PÚBLICA, HAY QUE VISIBILIZAR LA MENOPAUSIA",
+        underlinedText: "La Crónica",
+        imageSrc:
+            "https://placehold.co/215x328/D8BFD8/7B68EE?text=Expertos+Nivel+1",
+        imageAlt:
+            "PARA AVANZAR EN UNA AGENDA DE SALUD PÚBLICA, HAY QUE VISIBILIZAR LA MENOPAUSIA - La Crónica",
+    },
+    {
+        title: "INDISPENSABLE VISIBILIZAR EL TEMA DE LA MENOPAUSIA PARA AVANZAR EN LA AGENDA DE SALUD PÚBLICA",
+        underlinedText: "Observatorio Informativo",
+        imageSrc:
+            "https://placehold.co/215x328/D8BFD8/7B68EE?text=Expertos+Nivel+1",
+        imageAlt:
+            "INDISPENSABLE VISIBILIZAR EL TEMA DE LA MENOPAUSIA PARA AVANZAR EN LA AGENDA DE SALUD PÚBLICA - Observatorio Informativo",
+    },
+];
+const sectionStyles = `landing-section  flex-col bg-guacamole min-h-screen w-screen flex items-center justify-center pt-24 px-0 relative overflow-y-hidden`;
+---
+
+<section class={sectionStyles} data-header-color={`guacamole`} id="sala-de-prensa">
+    <div class="container w-full h-full flex flex-col mx-auto px-0 ">
+        <h2
+            id="speakers-title"
+            class="text-purple  text-4xl font-bold text-center mb-8 uppercase"
+        >
+            Sala de prensa
+        </h2>
+    </div>
+<div class="flex grow flex-col items-center justify-start mb-8 w-full max-w-5xl mx-auto" style="min-height:400px; max-height:70vh; overflow-y:auto;">
+  <RecursosGrid />
+</div>
+</section>

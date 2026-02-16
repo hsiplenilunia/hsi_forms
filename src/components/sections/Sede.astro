@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import museo from "../../assets/museo.png";
+import Button from "../Button.astro";
+import BulletIcon from "../icons/ChispaIcon.astro";
+import MapaMuseo from "../molecules/MapaMuseo.astro";
+const sectionStyles = `landing-section bg-capuchino min-h-screen w-screen flex items-center justify-center pt-0 relative overflow-y-hidden`;
+//foro.menopausia@plenilunia.com
+//https://wa.me/+5215543654094 
+---
+
+<section class={sectionStyles} data-header-color={`pink-fresh`} id="sede" aria-labelledby="sede-title">
+    <div
+        class="flex flex-col items-center justify-center h-screen w-full overflow-x-hidden md:overflow-y-hidden space-y-8 z-10 relative"
+        aria-describedby="sede-description"
+    >
+        <div
+            class="flex flex-col md:flex-row h-[70vh] w-screen self-start overflow-x-hidden justify-start items-start text-black-text px-6 md:pl-24 md:pr-0 xl:pr-24 mt-0 md:mt-14 mb-0 md:mb-0 z-20"
+        >
+            <div class="flex flex-col mr-12 mb-6">
+                <strong
+                    class="px-3 w-fit rounded-full border-2 border-solid border-black-text"
+                    id="sede-title"
+                >
+                    SEDE
+                </strong>
+                <h2 class="text-4xl  uppercase font-black mb-4 md:mb-0 max-w-[342px]">
+                    Museo Memoria y Tolerancia
+                </h2>
+                <strong class="font-bold">Sábado 18 octubre 2025</strong>
+                <p class="font-normal">
+                    <strong class="font-bold">Horario:</strong> 9:00 - 18:00 hrs
+                </p>
+                <small class="w-[80%]">El Museo Memoria y Tolerancia sólo es sede de este evento, cualquier duda o aclaración sobre el foro comunicarse con los organizadores.</small>
+                <div class="hidden md:flex w-full justify-start pr-24 mt-6 mb-6 md:mb-0">
+                    <Button href="#registro" label="QUIERO ASISTIR" />
+                </div>
+            </div>
+            <div
+                class="flex flex-col w-full md:w-[80%] pl-0 md:pl-24 md:border-l-2 md:border-[#222]"
+                id="sede-description"
+            >
+                <MapaMuseo />
+                <!-- <h3 class="font-bold text-lg md:text-base xl:text-2xl">¿POR QUÉ DEBES VIVIR ESTA EXPERIENCIA?</h3>
+                <ul
+                    class="list-disc space-y-0 text-[#222] md:text-lg font-sans pr-4 md:pr-24 ml-2 md:ml-6 my-6"
+                >
+                    <li>El conocimiento te da poder.</li>
+                    <li>Tu salud importa.</li>
+                    <li>
+                        Mereces transitar esta etapa
+                        <strong class="font-semibold"
+                            >con dignidad, bienestar y compañía.</strong
+                        >
+                    </li>
+                    <li>
+                        <strong class="font-semibold"
+                            >Plenilunia en mi Menopausia</strong
+                        > es un espacio hecho por y para mujeres, donde tu voz también
+                        cuenta.
+                    </li>
+                </ul>
+                <div class="hidden md:flex w-full justify-end pr-24 mb-6 md:mb-0">
+                    <Button href="#registro" label="QUIERO ASISTIR" />
+                </div> -->
+            </div>
+        </div>
+
+        <div
+            class="flex absolute right-[-10px] bottom-[-90px] lg:w-[90%] h-[30vh] md:h-[50vh] lg:h-[60vh] self-end justify-end items-end z-10"
+        >
+            <Image
+                src={museo}
+                alt="museo de memoria y tolerancia"
+                class="flex relative w-full h-full object-cover object-top"
+                loading="lazy"
+            />
+        </div>
+    </div>
+    
+</section>

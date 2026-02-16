@@ -1,0 +1,56 @@
+---
+import Accordion from "../molecules/Accordion.astro";
+
+// Importa el componente Accordion que crearás más adelante
+
+// Define un array de objetos con las preguntas y respuestas
+// Esta es la data del PDF que me pasaste
+const faqData = [
+  {
+    question: '¿De qué se trata el foro "Plenilunia en mi Menopausia"?',
+    answer:
+      'Plenilunia en mi Menopausia es más que un foro: es un espacio de encuentro, conocimiento y transformación. Una plataforma que visibiliza la menopausia como una etapa vital, natural y poderosa en la vida de las mujeres. Con una mirada libre de estigmas, integral y científica, abordamos la salud, las emociones, los derechos y el contexto social para impulsar bienestar, conciencia y comunidad.'
+  },
+  /* {
+    question: '¿Cuándo y dónde es el evento?',
+    answer:
+      'El evento será el Sábado 18 de octubre de 2025, de 9:00 a 18:00 hrs., en el Museo Memoria y Tolerancia, en la Ciudad de México.'
+  }, */
+  {
+    question: '¿Quién puede asistir?',
+    answer:
+      'Todas son bienvenidas. El foro está pensado principalmente para mujeres en etapa de perimenopausia o menopausia, de 35 a 65 años, pero también pueden asistir acompañantes, profesionales de la salud o quienes simplemente quieran aprender más sobre el tema.'
+  },
+ /*  {
+    question: '¿Dónde puedo comprar los boletos?',
+    answer:
+      'Puedes conseguir tus boletos en línea a través de goliiive.com.'
+  }, */
+ /*  {
+    question: '¿Qué incluye el boleto?',
+    answer:
+      'Tu entrada te da acceso a todas las conferencias y talleres del programa, activaciones de marcas aliadas, regalos, degustaciones y experiencias holísticas. Será un día de conexión, aprendizaje y bienestar en un espacio seguro y amoroso.'
+  } */
+];
+
+// Define los estilos de la sección
+const sectionStyles =
+  'landing-section bg-purple pb-12 w-screen flex flex-col items-center justify-center pt-24 px-8 relative overflow-y-hidden';
+---
+
+<section class={sectionStyles}>
+  <div class="max-w-4xl mx-auto w-full relative z-10">
+    <header class="text-center mb-8 pt-8 md:pt-16">
+      <h2
+        class="text-apple text-4xl md:text-4xl font-bold uppercase mb-4 mt-8 md:mt-0"
+      >
+        Preguntas frecuentes
+      </h2>
+    </header>
+    <div class="w-full space-y-4">
+      {faqData.map(item => (
+        <Accordion question={item.question} answer={item.answer} />
+      ))}
+    </div>
+  </div>
+</section>

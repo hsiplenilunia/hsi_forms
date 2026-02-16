@@ -1,0 +1,96 @@
+---
+// TODO: click on title and button to hover
+
+import Button from "../Button.astro";
+import AsistirCard from "../molecules/AsistirCard.astro";
+import OrganicShape from "../shapes/OrganicShape.astro";
+// Card data for the three variants
+import why_enfoques from '../../assets/why/why_enfoques.png';
+import why_experiencias from '../../assets/why/why_experiencias.png';
+import why_participan from '../../assets/why/why_participan.png';
+
+// Define type for card variants
+interface CardData {
+  title: string;
+  descriptiveContent: string;
+  imageState1Src: string | ImageMetadata;
+  imageAlt: string;
+  bgColorClass: string;
+  variant: "experts" | "program" | "experiences";
+}
+
+const cardData: CardData[] = [
+  {
+    title: "Participarán expertos de primer nivel",
+    descriptiveContent: "Especialistas médicas en ginecología, endocrinología, sexualidad, salud mental, psicología. Personalidades reconocidas a nivel internacional por su activismo sobre el tema. Nutriólogas, guías de experiencias sensoriales y holísticas.",
+    imageState1Src: why_participan,
+    imageAlt: "Expertos médicos especializados en menopausia",
+    bgColorClass: "bg-pink-fresh",
+    variant: "experts"
+  },
+  {
+    title: "Enfoques del programa",
+    descriptiveContent: `Menopausia con todas sus letras:  ¿Qué es?, síntomas, es tiempo de renovación. 
+Sexualidad; placer, deseo, dolor en las relaciones sexuales, juguetes sexuales.
+Cuidado personal y autocuidado; nutrición, ejercicio, belleza. 
+Vacunas; mitos y realidades. ¿Cuáles se recomiendan en la edad madura?
+Terapia hormonal; pros y contras.`,
+    imageState1Src: why_enfoques,
+    imageAlt: "Enfoques integrales del programa de menopausia",
+    bgColorClass: "bg-guacamole",
+    variant: "program"
+  },
+  {
+    title: "Experiencias",
+    descriptiveContent: `Una meditación profunda para reconectar contigo misma.
+
+Sonoterapia con cuencos tibetanos, que armonizará tu energía y traerá calma a tu ser.
+
+Dinámica de movimiento y danza, para liberar la pelvis y las caderas, despertando vitalidad y fluidez.
+
+Una ceremonia de despedida, para honrar lo que has sido y abrirte con gratitud a la mujer en la que te quieres convertir.`,
+    imageState1Src: why_experiencias,
+    imageAlt: "Experiencias sensoriales y terapéuticas",
+    bgColorClass: "bg-purple",
+    variant: "experiences"
+  }
+];
+const sectionStyles = `landing-section bg-capuchino min-h-screen w-screen flex items-center justify-center pt-24 px-2 relative overflow-y-hidden`;
+---
+
+<section
+  class={sectionStyles}
+  data-header-color={`purple`}
+  id='porque-asistir'
+  >
+  <!-- Organic background shapes - hidden on mobile, visible on desktop -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-0 hidden md:block" aria-hidden="true">
+    <OrganicShape className="absolute bottom-[-40px] left-[-100px] scale-75 transform scale-y-[-1]" />
+    <OrganicShape className="absolute bottom-[-40px] right-[-100px] scale-75 transform scale-x-[-1] scale-y-[-1]" />
+  </div>
+
+  <div class="max-w-7xl mx-auto px-0 relative z-10 w-full">
+    <header class="text-center mb-8 pt-8 md:pt-16">
+      <h2 class="text-purple-text text-4xl md:text-4xl font-bold uppercase mb-4 mt-8 md:mt-0">
+        ¿Por qué asistir?
+      </h2>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center  w-full">
+      {cardData.map((card) => (
+        <AsistirCard
+          title={card.title}
+          descriptiveContent={card.descriptiveContent}
+          imageState1Src={card.imageState1Src}
+          imageAlt={card.imageAlt}
+          bgColorClass={card.bgColorClass}
+          variant={card.variant}
+        />
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <Button href="#registro" label="QUIERO ASISTIR" />
+    </div>
+  </div>
+</section>

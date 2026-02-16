@@ -1,0 +1,126 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+const sectionStyles = `landing-section bg-purple w-screen text-center relative`;
+
+import heroLogo from "../assets/hero-logo.png";
+import heroLogoMobile from "../assets/hero-logo-mobile.png";
+import heroWoman from "../assets/hero-woman.png";
+import OpenPopUpButton from "./islands/atoms/OpenPopUpButton";
+
+import HeroVideo from "../components/molecules/HeroVideo.astro";
+
+---
+
+<section class={sectionStyles} data-header-color={`purple`} id="inicio" class="mb-6">
+  <!-- Desktop Layout -->
+  <div
+    class="hidden lg:flex justify-between items-center h-full px-16 pt-32 pb-6 z-30 relative"
+  >
+    <!-- Left content -->
+    <div class="flex flex-col w-[50vw] items-start max-w-[50vw] mb-6">
+      <h2 class="text-apple text-6xl font-bold uppercase">FORO</h2>
+
+      <Image
+        src={heroLogo}
+        alt="Logo plenilunia en mi menopausia"
+        class="w-full max-w-md 2xl:max-w-xl"
+        loading="eager"
+        fetchpriority="high"
+        widths={[400, 600, 800]}
+        sizes="(max-width: 1536px) 50vw, 800px"
+        format="webp"
+      />
+
+      <!-- Texto y botón alineados -->
+      <div class="flex items-start gap-4">
+        <!-- Texto -->
+        <!-- <div class="space-y-2 flex flex-col items-start">
+          <p class="text-3xl font-bold text-apple">SÁBADO 18 OCTUBRE 2025</p>
+          <p class="text-white text-2xl">Día Mundial de la Menopausia</p>
+
+        </div> -->
+        <div class="space-y-2 flex flex-col items-start">
+          <p class="text-white text-2xl">¡Aparta la fecha para nuestro Foro 2026!</p>
+          <strong class="text-white">Plenilunia en mi Menopausia</strong>
+          <p class="text-white text-left">Te invitamos a un espacio diseñado para informar, acompañar y fortalecer. Un foro que pone en el centro el bienestar de las mujeres en esta transición vital, libre de estigmas y con una mirada integral.</p>
+          
+          <p class="text-3xl font-bold text-apple">18 OCTUBRE 2026</p>
+          <p class="text-white text-xl">🌸 Próximamente más información.</p>
+          <p class="text-white"> Plenilunia más 20 años acompañando la salud de las mujeres.</p>
+
+        </div>
+        <!-- Botón alineado arriba -->
+        <div class="pt-1">
+          <!-- <Button href="#registro" label="QUIERO ASISTIR" /> -->
+          <!-- <OpenPopUpButton client:load /> -->
+        </div>
+      </div>
+
+      <!-- Sede -->
+     <!--  <p class="text-md text-white">
+        <strong class="text-[#C0EA6A]">SEDE:</strong>
+        <span class="font-bold">Museo Memoria y Tolerancia, CDMX.</span>
+        <br />
+        <div class="flex text-sm leading-0 text-start text-white mb-4">El Museo Memoria y Tolerancia sólo es sede de este evento, cualquier duda o aclaración <br /> sobre el foro comunicarse con los organizadores</div>
+      </p> -->
+    </div>
+
+    <!-- Right image -->
+    <div class="absolute bottom-0 right-0 max-w-2xl md:w-[30vw] lg:w-[40vw]">
+      <!-- <HeroVideo /> -->
+      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/cQ3hmi1Y5Kw?si=wPcjzA_ZZe_yRLlF" title="plenilunia en mi menopausia Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+      <!-- <div class="flex bg-capuchino text-black text-2xl p-6 absolute rounded-2xl rounded-tr-none -left-40 bottom-80 z-[60]">Yo soy Estrógeno.</div>-->
+      <Image
+        src={heroWoman}
+        alt="Mujer feliz"
+        class="w-full object-contain"
+        loading="eager"
+        fetchpriority="high"
+        widths={[400, 600, 800, 1024]}
+        sizes="(max-width: 768px) 30vw, 40vw"
+        format="webp"
+      />
+    </div>
+  </div>
+
+  <!-- Mobile Layout -->
+  <div
+    class="lg:hidden flex flex-col items-center text-center px-6 pt-28 z-30 relative h-full"
+  >
+    <h2 class="text-white text-2xl font-bold uppercase">FORO</h2>
+    <Image
+      src={heroLogoMobile}
+      alt="Logo plenilunia en mi menopausia"
+      class="w-[220px]"
+      loading="eager"
+      fetchpriority="high"
+      width={220}
+      format="webp"
+      quality={80}
+    />
+
+    <div class="space-y-2 flex flex-col items-start">
+          <p class="text-white text-2xl">¡Aparta la fecha para nuestro <strong>Foro 2026</strong>!</p>
+          <strong class="text-white">Plenilunia en mi Menopausia</strong>
+          <p class="text-white text-left">Te invitamos a un espacio diseñado para informar, acompañar y fortalecer. Un foro que pone en el centro el bienestar de las mujeres en esta transición vital, libre de estigmas y con una mirada integral.</p>
+          
+          <p class="text-3xl font-bold text-apple">18 OCTUBRE 2026</p>
+          <p class="text-white text-xl">🌸 Próximamente más información.</p>
+          <p class="text-white text-left"> Plenilunia más 20 años acompañando la salud de las mujeres.</p>
+          <br>
+          <br>
+        </div>
+
+ <!--    <p class="text-apple text-3xl font-bold">
+      SÁBADO 18 <br /> OCTUBRE, 2025
+    </p>
+    <p class="text-white text-xl">Día Mundial de la Menopausia</p>
+    <p class="text-lg text-white px-6">
+      <strong class="text-apple">SEDE:</strong>
+      <span class="font-bold">Museo Memoria y Tolerancia, CDMX.</span>
+      <div class="flex text-sm leading-0 text-start text-white mb-4">El Museo Memoria y Tolerancia sólo es sede de este evento, cualquier duda <br /> o aclaración sobre el foro comunicarse con los organizadores</div>
+    </p>
+  -->   
+  </div>
+</section>

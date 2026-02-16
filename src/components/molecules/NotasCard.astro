@@ -1,0 +1,215 @@
+---
+import NotasCardBg from "../atoms/NotasCardBg.astro";
+import { Image } from 'astro:assets';
+// NotasCard.astro - Card with two states: image and info
+export interface Props {
+  // State 1
+  imageSrc: string | ImageMetadata;
+  imageAlt: string;
+  // State 2
+  title: string;
+  underlinedText: string;
+  link?: string; // Optional link for more info
+}
+
+const {
+  imageSrc,
+  imageAlt,
+  title,
+  underlinedText,
+  link = '#', // Default to empty string if no link provided
+} = Astro.props;
+
+// Generate unique IDs for accessibility
+const cardId = `card-${Math.random().toString(36).substr(2, 9)}`;
+const state1Id = `state1-${cardId}`;
+const state2Id = `state2-${cardId}`;
+const buttonId = `button-${cardId}`;
+---
+
+<article
+  class="relative overflow-hidden rounded-3xl shadow-xl transition-all duration-500 ease-in-out w-full max-w-[434px] mx-auto h-auto min-h-[184px] max-h-[242px] group cursor-pointer"
+  id={cardId}
+>
+  <!-- STATE 1: Only Image -->
+  <div
+    id={state1Id}
+    class="card-state state-1 absolute inset-0 z-10 opacity-100 transition-all duration-500 ease-in-out"
+  >
+    <div class="flex items-center justify-center w-full h-full">
+      {typeof imageSrc === 'object' ? (
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          class="rounded-3xl object-cover w-[434px] h-[234px] md:w-[434px] md:h-[234px] sm:w-[344px] sm:h-[184px] max-w-full max-h-full"
+          width={434}
+          height={234}
+          loading="lazy"
+        />
+      ) : (
+        <img
+          src={imageSrc || 'https://placehold.co/434x234'}
+          alt={imageAlt}
+          class="rounded-3xl object-cover w-[434px] h-[234px] md:w-[434px] md:h-[234px] sm:w-[344px] sm:h-[184px] max-w-full max-h-full"
+          width="434"
+          height="234"
+          loading="lazy"
+        />
+      )}
+    </div>
+    <!-- FAB button always visible on mobile, hidden on desktop -->
+    <button
+      id={buttonId}
+      class="expand-btn absolute bottom-4 right-4 z-20 w-12 h-12 bg-red-600 text-light-text rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:bg-purple-text hover:scale-110 focus:outline-none focus:ring-2 focus:ring-apple focus:ring-opacity-50 shadow-lg md:hidden"
+      aria-controls={`${state1Id} ${state2Id}`}
+      aria-expanded="false"
+      aria-label="Expandir información de la tarjeta"
+      title="Expandir información"
+    >
+      <span class="button-icon text-xl font-bold transition-transform duration-300">+</span>
+    </button>
+  </div>
+
+  <!-- STATE 2: Info with NotasCardBg -->
+  <div
+    id={state2Id}
+    class="card-state state-2 absolute inset-0 z-10 opacity-0 transition-all duration-500 ease-in-out shadow-none"
+  >
+    <div class="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden pointer-events-none">
+      <NotasCardBg class="w-full h-full max-w-[434px] max-h-[242px] object-cover mx-auto !shadow-none" />
+    </div>
+    <div class="absolute inset-0 flex flex-col items-center justify-center h-full px-4">
+      <h2 class="text-purple-text text-xl md:text-2xl font-bold text-center leading-5 md:leading-6 mb-2 max-w-[90%]">
+        {title}
+      </h2>
+      <span class="text-purple-text hover:text-light-text text-lg md:text-xl font-bold underline underline-offset-4 mb-2">
+        <a href={link} target="_blank">{underlinedText}</a>
+      </span>
+      <!-- FAB button always visible on mobile, hidden on desktop -->
+      <button
+        id={buttonId + '-state2'}
+        class="expand-btn absolute bottom-4 right-4 z-20 w-12 h-12 bg-purple text-light-text rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:bg-purple-text hover:scale-110 focus:outline-none focus:ring-2 focus:ring-apple focus:ring-opacity-50 shadow-lg lg:hidden"
+        aria-controls={`${state1Id} ${state2Id}`}
+        aria-expanded="true"
+        aria-label="Contraer información de la tarjeta"
+        title="Contraer información"
+        type="button"
+      >
+        <span class="button-icon text-xl font-bold transition-transform duration-300">−</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Floating Action Button (hidden on desktop) -->
+  <button
+    id={buttonId}
+    class="expand-btn absolute bottom-4 right-4 z-20 w-12 h-12 bg-purple text-light-text rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:bg-purple-text hover:scale-110 focus:outline-none focus:ring-2 focus:ring-apple focus:ring-opacity-50 shadow-lg lg:hidden"
+    aria-controls={`${state1Id} ${state2Id}`}
+    aria-expanded="false"
+    aria-label="Expandir información de la tarjeta"
+    title="Expandir información"
+    style="display: none;"
+  >
+    <span class="button-icon text-xl font-bold transition-transform duration-300">+</span>
+  </button>
+</article>
+
+<style>
+  .card-state {
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .state-1 {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .state-2 {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+  .card-expanded .state-1 {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+  .card-expanded .state-2 {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .button-icon {
+    transition: transform 0.3s ease-in-out;
+  }
+  .expand-btn.expanded .button-icon {
+    transform: rotate(45deg);
+  }
+  /* Desktop hover: show state2, hide state1 */
+  @media (min-width: 768px) {
+    .group:hover.card-collapsed .state-1 {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
+    .group:hover.card-collapsed .state-2 {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  }
+</style>
+
+<script>
+  // Two-state card interaction system (keep as is)
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('article[id^="card-"]');
+    cards.forEach(card => {
+      const button = card.querySelector('.expand-btn');
+      const button2 = card.querySelector('.state-2 .expand-btn');
+      const state1 = card.querySelector('.state-1');
+      const state2 = card.querySelector('.state-2');
+      const buttonIcon = button?.querySelector('.button-icon');
+      if (!button || !state1 || !state2 || !buttonIcon) return;
+      let isExpanded = false;
+      card.classList.add('card-collapsed');
+      function toggleCardState() {
+        isExpanded = !isExpanded;
+        button.setAttribute('aria-expanded', isExpanded.toString());
+        const action = isExpanded ? 'Contraer' : 'Expandir';
+        button.setAttribute('aria-label', `${action} información de la tarjeta`);
+        button.setAttribute('title', `${action} información`);
+        if (isExpanded) {
+          card.classList.remove('card-collapsed');
+          card.classList.add('card-expanded');
+          button.classList.add('expanded');
+          buttonIcon.textContent = '−';
+        } else {
+          card.classList.remove('card-expanded');
+          card.classList.add('card-collapsed');
+          button.classList.remove('expanded');
+          buttonIcon.textContent = '+';
+        }
+      }
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleCardState();
+      });
+      if (button2) {
+        button2.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleCardState();
+        });
+      }
+      button.addEventListener('keydown', function(e) {
+        const event = e as KeyboardEvent;
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggleCardState();
+        }
+      });
+    });
+  });
+</script>

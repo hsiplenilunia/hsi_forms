@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import actualidad_woman from "../../assets/actualidad-woman.png";
+import Button from "../Button.astro";
+
+const sectionStyles = `landing-section bg-apple-dark min-h-screen w-screen flex items-center justify-center pt-24 px-8 relative overflow-y-hidden`;
+---
+
+<section
+    class={sectionStyles}
+    data-header-color={`apple-dark`}
+    id="actualidad"
+>
+    <div
+        class="flex
+  flex-col
+  md:flex-row
+  items-center
+  justify-center
+  h-full
+  space-y-8
+  z-10
+  relative"
+    >
+        <div
+            class="flex flex-col text-purple md:pl-24 md:w-[60%] mt-14 md:mt-0 mb-0 md:mb-6"
+        >
+            <h2 class="text-4xl text-start font-bold uppercase mb-12">Actualidad</h2>
+            <p class="mb-6">
+                La menopausia no llega sola. Forma parte de un proceso natural,
+                amplio y profundo llamado climaterio, que puede comenzar antes
+                de los 45 años y extenderse más allá de los 55. Un ciclo vital
+                que, aunque compartido por millones de mujeres, se vive de forma
+                única: con cambios físicos, emocionales, hormonales... y muchas
+                veces, en silencio.
+            </p>
+            <p class="mb-8">
+                Lo que pocas veces se dice es que esta etapa también incrementa
+                el riesgo de enfermedades como la hipertensión, la diabetes, la
+                osteoporosis o la incontinencia urinaria, así como el aumento de
+                peso. Por eso, hoy más que nunca, es momento de hablar, de
+                escuchar y de acompañarnos.
+            </p>
+            <div class="flex w-full mb-6 md:mb-0">
+                <Button href="#registro" label="QUIERO ASISTIR" />
+            </div>
+        </div>
+
+        <div class="flex md:w-[40%] justify-end">
+            <Image
+                src={actualidad_woman}
+                alt="mujer actual y empoderada"
+                widths={[400, 600]}
+                loading="lazy"
+            />
+        </div>
+    </div>
+</section>

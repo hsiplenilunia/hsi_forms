@@ -1,0 +1,55 @@
+---
+// src/components/HeroVideo.astro
+
+// 1. Importa la imagen poster que acabas de crear.
+import heroVideoPoster from "../../assets/hero-video-poster.png";
+
+// 2. Define las rutas a tus videos optimizados (los que están en el CDN o en /public)
+const videoWebmUrl = "/videos/hormona_1.webm";
+const videoMovUrl = "/videos/hormona_1.mov";
+---
+
+<div 
+  class="absolute bottom-0 right-0 max-w-2xl md:w-[30vw] lg:w-[40vw] max-h-[80vh]"
+>
+  <video
+    id="heroVideo"
+    class="w-[20vw] object-fill h-[80vh]"
+    loop
+    muted
+    playsinline
+    preload="none"  poster={heroVideoPoster.src} >
+    <source data-src={videoWebmUrl} type="video/webm" />
+    <source data-src={videoMovUrl} type="video/quicktime" />
+  </video>
+</div>
+
+<script>
+  // Este script se ejecuta en el cliente para cargar el video de forma diferida.
+  document.addEventListener("DOMContentLoaded", () => {
+    const video = document.getElementById("heroVideo") as HTMLVideoElement;
+
+    // IntersectionObserver es más eficiente que escuchar eventos de scroll.
+    // En este caso, lo usamos para disparar la carga justo después de que la página
+    // esté lista, pero sin bloquear el renderizado inicial.
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        const sources = video.querySelectorAll("source");
+        sources.forEach(source => {
+          // Movemos la URL de data-src a src para iniciar la descarga.
+          source.src = source.dataset.src;
+        });
+
+        video.load(); // Carga las nuevas fuentes
+        video.play().catch(error => {
+          console.error("La reproducción automática del video fue bloqueada.", error);
+        });
+
+        // Dejamos de observar una vez que el video ha comenzado a cargar.
+        observer.unobserve(video);
+      }
+    });
+
+    observer.observe(video);
+  });
+</script>

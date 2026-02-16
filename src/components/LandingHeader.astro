@@ -1,0 +1,270 @@
+---
+import { Image } from 'astro:assets';
+//import Logo from "./Logo.astro";
+import pleniluniaLogo from '../assets/plenilunia-logo.png';
+import HamburguerIcon from "./icons/hamburguerIcon.astro";
+import MobileMenu from "./MobileMenu.astro";
+
+import { menu } from "./data/menuData.ts";
+import DownTriangleIcon from "./icons/DownTriangleIcon.astro";
+
+const landingStyle = `transition-colors duration-300 bg-black/20 backdrop-blur-xl
+        py-4 px-6 flex items-center fixed top-0 w-full justify-between z-40
+        text-white`
+
+const landingStyle_b = `transition-colors duration-300
+        py-4 px-6 flex items-center fixed top-0 w-full justify-between z-40
+        text-white`
+
+let landingStyle_c = landingStyle_b;
+
+const headerInitialClasses = `
+  transition-colors duration-300 bg-black/20 backdrop-blur-xl
+  py-4 px-6 flex items-center fixed top-0 w-full justify-between z-40
+  text-white
+`;
+---
+
+<header
+  id="landing-header"
+  class={headerInitialClasses}
+>
+  <div class="flex flex-grow basis-0">
+    <a href="#inicio">
+      <Image 
+                src={pleniluniaLogo} 
+                alt="Logo de Plenilunia" 
+                width={60} 
+                loading='lazy'
+                 />
+    </a>
+  </div>
+
+  <nav class="hidden ml-6 flex-grow xl:block sm:hidden text-white">
+    <ul class="flex justify-end text-base gap-4 font-bold uppercase">
+      {
+        menu.map((item) => (
+          <li
+            class={`relative text-[0.9em] flex justify-center items-center ${item.className || ""}`}
+          >
+            {item.subOptions ? (
+              <div class="relative group">
+                <span class="hover-target nav-link flex justify-center items-center gap-2 px-4 py-2 cursor-pointer hover:text-apple transition-colors text-center">
+                  {item.name}
+                  <DownTriangleIcon />
+                </span>
+
+                <div class="absolute top-full left-0 w-full h-4" />
+
+                <ul
+                  class="
+                  absolute left-1/2 -translate-x-1/2
+                  top-[calc(100%+28px)]
+                  min-w-[300px] bg-[#1B1323] text-white
+                  p-6 rounded-lg shadow-xl
+                  opacity-0 invisible
+                  group-hover:opacity-100 group-hover:visible
+                  transition-all duration-300 z-50
+                "
+                >
+                  {item.subOptions.map((sub) => (
+                    <li>
+                      <a
+                        href={sub.link}
+                        class="block px-2 py-1 hover:text-apple transition-colors whitespace-nowrap"
+                      >
+                        {sub.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <a
+                href={item.link}
+                class="hover-target nav-link px-4 py-2 flex justify-center items-center gap-2 hover:text-apple transition-colors text-center"
+              >
+                {item.name}
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <nav class="flex flex-grow justify-end basis-0 text-white">
+    <button
+      id="menu-btn"
+      aria-label="Abrir menú"
+      class="ml-4 font-semibold xl:hidden z-50"
+    >
+      <HamburguerIcon />
+    </button>
+  </nav>
+
+  <MobileMenu />
+
+  <div
+    id="menu-backdrop"
+    class={`
+    absolute bg-[#4F2583] rounded-xl
+    translate-x-[var(--left)] translate-y-[var(--top)]
+    left-0 top-[0px]
+    w-[var(--width)] h-[var(--height)]
+    transition-all duration-300 ease-in-out opacity-0 invisible -z-10
+  `}
+  >
+  </div>
+</header>
+
+<script>
+  // Variable para controlar el autocierre del menú móvil
+  const isAutoClose = true; // Cambia a false si no quieres autocierre
+
+  // Referencias a los elementos del menú móvil
+  const menuBtn = document.getElementById("menu-btn");
+  const closeBtn = document.getElementById("close-btn");
+  const modalContainer = document.getElementById("modal-menu-container");
+  const menuPanel = document.getElementById("menu-panel");
+  const landingHeader = document.getElementById("landing-header");
+  const headerBackdropClasses = ["bg-black/20", "backdrop-blur-xl"];
+
+
+  function openMenu() {
+    if (!modalContainer || !menuPanel) return;
+    landingHeader.classList.remove(...headerBackdropClasses);
+    modalContainer.classList.remove("hidden");
+    //document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => {
+      menuPanel.classList.remove("translate-x-full");
+      // Focus first interactive element in menu
+      const focusableSelectors = [
+        'a[href]:not([tabindex="-1"])',
+        'button:not([disabled]):not([tabindex="-1"])',
+        'input:not([disabled]):not([tabindex="-1"])',
+        'select:not([disabled]):not([tabindex="-1"])',
+        'textarea:not([disabled]):not([tabindex="-1"])',
+        '[tabindex]:not([tabindex="-1"])'
+      ];
+      const focusableEls = menuPanel.querySelectorAll(focusableSelectors.join(", "));
+      const focusable = Array.prototype.slice.call(focusableEls);
+      if (focusable.length > 0) {
+        focusable[0].focus();
+      }
+    });
+  }
+
+  function closeMenu() {
+    if (!modalContainer || !menuPanel) return;
+    //document.body.style.overflow = "";
+    menuPanel.classList.add("translate-x-full");
+    setTimeout(() => {
+      modalContainer.classList.add("hidden");
+      // Return focus to menu button
+      if (menuBtn) menuBtn.focus();
+    }, 300);
+    landingHeader.classList.add(...headerBackdropClasses);
+  }
+
+
+  // Event Listeners
+  menuBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    openMenu();
+  });
+  closeBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeMenu();
+  });
+  modalContainer?.addEventListener("click", () => {
+    closeMenu();
+  });
+  menuPanel?.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  // Tab trap for accessibility
+  document.addEventListener("keydown", (e) => {
+    // Trap focus inside menuPanel when modal is open
+    if (!modalContainer.classList.contains("hidden") && e.key === "Tab") {
+      const focusableSelectors = [
+        'a[href]:not([tabindex="-1"])',
+        'button:not([disabled]):not([tabindex="-1"])',
+        'input:not([disabled]):not([tabindex="-1"])',
+        'select:not([disabled]):not([tabindex="-1"])',
+        'textarea:not([disabled]):not([tabindex="-1"])',
+        '[tabindex]:not([tabindex="-1"])'
+      ];
+      const focusableEls = menuPanel.querySelectorAll(focusableSelectors.join(", "));
+      const focusable = Array.prototype.slice.call(focusableEls);
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      if (!menuPanel.contains(active)) {
+        first.focus();
+        e.preventDefault();
+        return;
+      }
+      if (!e.shiftKey && active === last) {
+        first.focus();
+        e.preventDefault();
+      } else if (e.shiftKey && active === first) {
+        last.focus();
+        e.preventDefault();
+      }
+    }
+    // Escape closes menu
+    if (e.key === "Escape" && !modalContainer.classList.contains("hidden")) {
+      closeMenu();
+    }
+  });
+
+  // --- AUTOCLOSE FEATURE FOR MOBILE NAV ---
+  // Solo aplica a los links del menú móvil
+  function handleMobileNavLinkClick(e) {
+    // Solo si isAutoClose está activo y el link es un ancla interna
+    if (!isAutoClose) return;
+    const href = e.currentTarget.getAttribute("href");
+    if (!href || !href.startsWith("#")) return;
+
+    // Espera a que termine el scroll y cierra el menú
+    let scrollTimeout;
+    function onScroll() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        window.removeEventListener("scroll", onScroll);
+        closeMenu();
+      }, 120); // Espera 120ms después del último scroll
+    }
+    window.addEventListener("scroll", onScroll);
+    // Por si el scroll es instantáneo (sin animación)
+    setTimeout(() => {
+      window.removeEventListener("scroll", onScroll);
+      closeMenu();
+    }, 700); // Máximo 700ms de espera
+  }
+
+  // Asigna el handler a los links del menú móvil después de renderizar
+  window.addEventListener("DOMContentLoaded", () => {
+    if (!modalContainer) return;
+    // Busca solo los links dentro del panel móvil
+    const mobileLinks = modalContainer.querySelectorAll("a[href^='#']");
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", handleMobileNavLinkClick);
+    });
+  });
+</script>
+
+<script>
+  const listItem = document.querySelectorAll("#landing-header li");
+  const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+
+  function setupMenuHover() {
+    // ... tu código existente para el hover del menú de escritorio ...
+    // Este código es correcto y no interfiere con el menú móvil.
+    // ...
+  }
+  // etc...
+</script>

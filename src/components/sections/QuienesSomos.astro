@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import OrganicShape from '../shapes/OrganicShape.astro';
+
+import pleniluniaLogo from '../../assets/plenilunia-logo.png';
+
+
+//const sectionStyles = `landing-section bg-purple h-screen w-screen text-center overflow-hidden overflow-y-hidden relative`;
+const sectionStyles = `landing-section bg-purple min-h-screen w-screen flex items-center justify-center pt-24 px-8 relative overflow-y-hidden`;
+---
+<section
+  class={sectionStyles}
+  data-header-color={`purple`}
+  id='quienes-somos'
+  >
+ 
+  <div class="flex flex-col items-center justify-center h-full space-y-8 z-10 relative">
+    <div class="text-apple text-4xl text-center font-bold uppercase mt-14 md:mt-0 mb-0 md:mb-6">
+        <h2>¿QUIÉNES SOMOS?</h2>
+    </div>
+    <div class="flex flex-col">
+        <div class="flex mb-6 flex-col md:flex-row">
+            <div class="flex  min-w-[220px] justify-center items-center py-12 md:py-0">
+                <Image 
+                src={pleniluniaLogo} 
+                alt="Logo de Plenilunia" 
+                width={120} 
+                loading='lazy'
+                 />
+            </div>
+            <div class="flex text-white text-lg min-w-[312px] max-w-[947px]">
+                <p class="text-start">Plenilunia es una plataforma pionera con más de 20 años de experiencia en la creación de espacios de comunicación dedicados a la <strong class="font-bold">salud integral de la mujer</strong>. A través de medios impresos, digitales, audiovisuales y eventos, ha sido referente en bienestar femenino. Su trabajo ha generado impacto y diálogo en distintos niveles del <strong class="font-bold">sector salud</strong>, siendo organizadora del reconocido Foro El Desafío de las Infecciones Intrahospitalarias, con más de 1,500 profesionales de la salud y aliados estratégicos como instituciones médicas y farmacéuticas de primer nivel, Pfizer, Vitalmex, Baxter, TecSalud, entre otros.</p>
+            </div>
+        </div>
+        
+        <div class="flex flex-col md:flex-row">
+            <div class="flex min-w-[220px] justify-center items-center py-12 md:py-0">
+                <!-- <Image 
+                src={athaLogo} 
+                alt="Logo de Atha Bienestar" 
+                width={150} 
+                loading='lazy'
+                /> -->
+            </div>
+            <div class="flex flex-col text-white text-lg min-w-[312px] max-w-[947px]">
+                
+                <p class="text-start">En Plenilunia sumamos experiencia, visión y compromiso para crear un foro único que pone al centro la salud, el conocimiento y la voz de las mujeres en etapa de climaterio y menopausia.</p>
+                <p class="py-24 lg:hidden">&nbsp;</p>
+            </div>
+        </div>
+        
+    </div>
+  </div>
+
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-0 ">
+    <OrganicShape className="absolute top-[-30px] left-[-250px] scale-75 md:scale-100 md:left-[-50px] md:top-0" />
+    <OrganicShape className="absolute bottom-[-40px] md:bottom-[-150px] md:right-[-100px] right-[-100px] scale-75 rotate-180" />
+  </div>
+
+</section>

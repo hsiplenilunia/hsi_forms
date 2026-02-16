@@ -1,0 +1,90 @@
+---
+import LinkIcon from "../icons/LinkIcon.astro";
+import IconFactory from "./IconFactory.astro";
+
+import {files} from "../data/salaDePrensa";
+---
+
+<div id="recursos-root" class="w-full max-w-5xl mx-auto p-4 h-full" data-view="list">
+  <!-- Toggle Bar -->
+  <div class="flex w-full justify-end gap-2 mb-6">
+    <button
+      id="recursos-list-btn"
+      class="p-2 rounded transition-colors bg-guacamole-light text-purple"
+      aria-label="Vista de lista"
+      type="button"
+      onclick="window.setRecursosView && window.setRecursosView('list')"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+      </svg>
+    </button>
+    <button
+      id="recursos-grid-btn"
+      class="p-2 rounded transition-colors text-gray-600 hover:text-purple-text"
+      aria-label="Vista de cuadrícula"
+      type="button"
+      onclick="window.setRecursosView && window.setRecursosView('grid')"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 6.75h3a.75.75 0 0 0 .75-.75v-3A.75.75 0 0 0 7.5 2.25h-3a.75.75 0 0 0-.75.75v3a.75.75 0 0 0 .75.75zm0 10.5h3a.75.75 0 0 0 .75-.75v-3a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75v3a.75.75 0 0 0 .75.75zm10.5-10.5h3a.75.75 0 0 0 .75-.75v-3a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75v3a.75.75 0 0 0 .75.75zm0 10.5h3a.75.75 0 0 0 .75-.75v-3a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75v3a.75.75 0 0 0 .75.75z" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="recursos-list-view">
+    <ul class="space-y-4">
+      {files.map(file => (
+        <li class="flex items-center bg-guacamole-light rounded-lg shadow p-4 gap-4">
+          <div class="flex-shrink-0">
+            <IconFactory variant={file.fileType} />
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-lg font-semibold text-gray-900">{file.title}</h3>
+            <span class="block text-xs text-black-text mb-2 uppercase tracking-wide">{file.fileType}</span>
+            <a href={file.downloadUrl} target="_blank" class="inline-block mt-1 px-6 py-2 bg-capuchino text-purple-text hover:bg-purple hover:text-guacamole-light rounded-full font-semibold shadow transition-colors" download>
+              Consultar
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div id="recursos-grid-view" style="display:none">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+      {files.map(file => (
+        <div class="bg-guacamole-light rounded-lg shadow flex flex-col items-center p-4">
+          <IconFactory variant={file.fileType} />
+          <h3 class="text-base font-semibold text-gray-900 text-center mb-1">{file.title}</h3>
+          <span class="block text-xs text-black-text mb-2 uppercase tracking-wide">{file.fileType}</span>
+          <a href={file.downloadUrl} class="mt-auto px-4 py-1 bg-capuchino text-purple-text rounded-full font-medium text-sm hover:bg-purple hover:text-guacamole-light transition-colors" download>
+            Descargar
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  window.setRecursosView = function(view) {
+    const root = document.getElementById('recursos-root');
+    const listBtn = document.getElementById('recursos-list-btn');
+    const gridBtn = document.getElementById('recursos-grid-btn');
+    const listView = document.getElementById('recursos-list-view');
+    const gridView = document.getElementById('recursos-grid-view');
+    if (!root || !listBtn || !gridBtn || !listView || !gridView) return;
+    root.setAttribute('data-view', view);
+    if (view === 'list') {
+      listView.style.display = '';
+      gridView.style.display = 'none';
+      listBtn.className = 'p-2 rounded transition-colors bg-guacamole-light text-purple';
+      gridBtn.className = 'p-2 rounded transition-colors text-gray-600 hover:text-purple-text';
+    } else {
+      listView.style.display = 'none';
+      gridView.style.display = '';
+      listBtn.className = 'p-2 rounded transition-colors text-gray-600 hover:text-purple-text';
+      gridBtn.className = 'p-2 rounded transition-colors bg-guacamole-light text-purple';
+    }
+  };
+</script>

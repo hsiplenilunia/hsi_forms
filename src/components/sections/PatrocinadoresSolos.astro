@@ -1,0 +1,187 @@
+---
+import SpeakerOrganicBg from "../atoms/SpeakerOrganicBg.astro";
+import MarqueeLogos from "../islands/MarqueeLogos.tsx";
+import SimpleMarquee from "../islands/SimpleMarquee.tsx";
+
+const aliados = [
+    /* {
+    imgSrc: '/logos/logo_pleni.png',
+    imgAlt: 'Logo Pleni',
+    style: 'max-h-16',
+  },
+  {
+    imgSrc: '/logos/logo_atha.png',
+    imgAlt: 'Logo Atha',
+    style: 'max-h-16',
+  }, */
+    {
+        imgSrc: "/logos/logo_sinreglas.png",
+        imgAlt: "Logo Sin Reglas",
+        style: "max-h-16",
+    },
+    {
+        imgSrc: "/logos/logo_nopausa.png",
+        imgAlt: "Logo Nopausa",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/logo_mujeres_en_hormonia.png",
+        imgAlt: "Logo Mujeres en Hormonia",
+        style: "max-h-16",
+    },
+    {
+        imgSrc: "/logos/logo_ATREVIA_Exeltis_MenopausiaEnSintonia.png",
+        imgAlt: "Logo Menopausia en Sintonía",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/logo_Medicina con M de Mujer.png",
+        imgAlt: "Logo Medicina con M de Mujer",
+        style: "max-h-16",
+    },
+    {
+        imgSrc: "/logos/logo_medita_mexico.png",
+        imgAlt: "Logo Medita México",
+        style: "max-h-16",
+    },
+];
+
+const patrocinadores = [
+    {
+        imgSrc: "/logos/logo_bayer.png",
+        imgAlt: "Logo Bayer",
+        style: "max-h-16",
+    },
+    {
+        imgSrc: "/logos/logo_lelo.png",
+        imgAlt: "Logo Lelo",
+        style: "max-h-16",
+    },
+    {
+        imgSrc: "/logos/logo_Intima.png",
+        imgAlt: "Logo Íntima",
+        style: "max-h-16",
+    },
+    {
+        imgSrc: "/logos/logo_exeltis.png",
+        imgAlt: "Logo Exeltis",
+        style: "max-h-16",
+    },
+    {
+        imgSrc: "/logos/Logo TurnOververde .png",
+        imgAlt: "Logo Turnover",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/LALA logo patrocinador.png",
+        imgAlt: "Logo Lala",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/Astellas Logo Patrocinador.png",
+        imgAlt: "Logo Astellas",
+        style: "max-h-16",
+    },
+    
+    {
+        imgSrc: "/logos/cumlaude-removebg-preview.webp",
+        imgAlt: "Logo Cumlaude",
+        style: "max-h-16",
+    }, 
+
+    {
+        imgSrc: "/logos/Logo_Koltin-01ok.png",
+        imgAlt: "Logo Koltin",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/moore.png",
+        imgAlt: "Logo Moore",
+        style: "max-h-16",
+    },
+
+
+    {
+        imgSrc: "/logos/lykadfinal.webp",
+        imgAlt: "Logo lykadfinal",
+        style: "max-h-16",
+    },
+
+
+    {
+        imgSrc: "/logos/granagard.webp",
+        imgAlt: "Logo granagard",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/logo_vivien.webp",
+        imgAlt: "Logo Vivien",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/logo_libdo.webp",
+        imgAlt: "Logo Libdo",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/Natura.png",
+        imgAlt: "Logo Natura",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/logo_botanical_wisdom_ok.png",
+        imgAlt: "Logo Botanical Wisdom",
+        style: "max-h-16",
+    },
+    
+    {
+        imgSrc: "/logos/logo_therbal.png",
+        imgAlt: "Logo Therbal",
+        style: "max-h-16",
+    },
+
+
+    {
+        imgSrc: "/logos/koi_cafe_and_catering.webp",
+        imgAlt: "Logo KOI Cafe & Catering",
+        style: "max-h-16",
+    },
+
+    {
+        imgSrc: "/logos/logo_krikketi.png",
+        imgAlt: "Logo KRIKKETI",
+        style: "max-h-16 ",
+    },
+
+    {
+        imgSrc: "logos/SaludAureaPatrocinador300dpi (1).webp",
+        imgAlt: "Logo Salud Áurea",
+        style: "max-h-16",
+    },
+    
+    {
+        imgSrc: "logos/logo_holiherb.png",
+        imgAlt: "Logo Holiherb",
+        style: "max-h-16",
+    },
+];
+//public/logos/logo_libdo.wep
+
+const sectionStyles = `landing-section bg-white w-screen flex flex-col items-center justify-center pt-0 px-8 relative overflow-y-hidden pb-8 md:pb-6`;
+---
+
+<!-- <section aria-labelledby="speakers-title" class="py-16 bg-purple"> -->
+<section class={sectionStyles} data-header-color={`capuchino`} id="aliados1">
+    <div class="container mx-auto mt-10 px-0 md:px-4">
+        <SimpleMarquee client:load logos={patrocinadores} />
+    </div>
+</section>

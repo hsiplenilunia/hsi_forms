@@ -1,0 +1,18 @@
+---
+import OpenPopUpButton from "./islands/atoms/OpenPopUpButton";
+
+const { href = "#", label = "Ver más" } = Astro.props;
+const tickets = "https://www.goliiive.com/foro-habitando-mi-menopausia-hablemos-claro-hablemos-juntas"
+---
+<!--<OpenPopUpButton client:load />-->
+ <a
+  href={tickets}
+  class="flex w-full justify-center md:w-auto md:inline-block 
+  bg-[#A2AB8E] 
+  text-white hover:text-purple font-bold py-2 px-6 rounded-full 
+  border-2 border-white hover:border-apple shadow-xl hover:bg-white transition focus:outline-none focus:ring-2 focus:ring-apple focus:ring-opacity-50"
+  aria-label={label}
+  target="_blank"
+>
+  {label}
+</a>

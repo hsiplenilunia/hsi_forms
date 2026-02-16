@@ -1,0 +1,26 @@
+---
+import LinkIcon from "../icons/LinkIcon.astro";
+import InstagramBlackIcon from "../icons/InstagramBlackIcon.astro";
+import InstagramOutlineIcon from "../icons/InstagramOutlineIcon.astro";
+import PostalEyeIcon from "../icons/PostalEyeIcon.astro";
+import VideoIcon from "../icons/VideoIcon.astro";
+// Importa más iconos Astro aquí si los tienes
+
+interface Props {
+  variant: string;
+}
+
+const { variant } = Astro.props;
+---
+
+{variant === "pdf" && (
+  <svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+  </svg>
+)}
+{(variant === "link" || variant === "Recurso en línea") && <LinkIcon />}
+{variant === "instagram_black" || variant === "Reel"  && <InstagramBlackIcon />}
+{variant === "instagram_outline" || variant === "Carrusel" && <InstagramOutlineIcon />}
+{variant === "video" || variant === "Video" && <VideoIcon />}
+{/* Agrega más variantes aquí */}
+{(variant === "postal_eye" || variant === "Postal") && <PostalEyeIcon />}
