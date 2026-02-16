@@ -8,8 +8,11 @@ import FloatingWhatsApp from './atoms/FloatingWhatsApp.tsx';
 // Estados del flujo
 type FlowState = 'invitation' | 'form' | 'success';
 
+interface FlujoRegistroSectionIslandProps {
+    queryParams?: Record<string, string>;
+}
 
-const FlujoRegistroSectionIsland: React.FC = () => {
+const FlujoRegistroSectionIsland: React.FC<FlujoRegistroSectionIslandProps> = ({ queryParams = {} }) => {
     const { step, isRegistered, isFlowOpen, setCurrentStep, openFlow, closeFlow, registerOk } = useFlujoRegistroStore();
     const [isOpen, setIsOpen] = useState(false);
     const [currentState, setCurrentState] = useState<FlowState>('form');
@@ -18,7 +21,7 @@ const FlujoRegistroSectionIsland: React.FC = () => {
         apellido: '',
         correoElectronico: '',
         whatsapp: '',
-        anoNacimiento: '',
+        especialidad: '',
         aceptaPrivacidad: false,
     });
     const [errors, setErrors] = useState<FormErrors>({});
@@ -65,6 +68,7 @@ const FlujoRegistroSectionIsland: React.FC = () => {
                 return (
                     <RegistrationForm
                         setCurrentState={setCurrentStep}
+                        queryParams={queryParams}
                     />
                 );
 
@@ -80,7 +84,7 @@ const FlujoRegistroSectionIsland: React.FC = () => {
 
     return (
         <>
-            <div className="relative bg-pink-fresh rounded-2xl shadow-xl max-w-md w-full mx-0 p-6 max-h-[90vh] overflow-y-auto">
+            <div className="relative bg-white rounded-2xl shadow-xl max-w-md w-full mx-0 p-6 max-h-[90vh] overflow-y-auto">
                 
 
                 {/* Contenido del modal */}

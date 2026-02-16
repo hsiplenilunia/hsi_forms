@@ -8,7 +8,7 @@ module.exports = {
 		,
 		extend: {
 			colors: {
-				purple: "#7758AC",
+				purple: "#334756",
 				'purple-text': "#7244B4",
 				apple: "#C2D293",
 				guacamole: "#C2D293",
@@ -17,7 +17,7 @@ module.exports = {
 				'apple-dark':"#B7D280",
 				'pink-fresh':"#F8C5FE",
 				'black-text': "#020202",
-				capuchino: "#EBE5DD",
+				capuchino: "#F2F2F2",
 				'light-text': "#FAF9F9"
 			}
 		},

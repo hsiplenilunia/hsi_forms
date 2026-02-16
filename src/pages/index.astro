@@ -26,7 +26,8 @@ import Precios from "../components/sections/Precios.astro";
 import Agenda from "../components/sections/Agenda.astro";
 import Faqs from "../components/sections/Faqs.astro";
 
-
+// Obtener parámetros GET de la URL (ej: /?r=doctor)
+const queryParams = Object.fromEntries(Astro.url.searchParams);
 ---
 
 <Layout title="Foro Menopausia 2025">
@@ -36,8 +37,8 @@ import Faqs from "../components/sections/Faqs.astro";
     class="relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
   >
   
-    <div class="snap-center justify-center flex items-center bg-capuchino py-6">
-      <FlujoRegistroSectionIsland client:visible />
+    <div class="snap-center justify-center flex items-center bg-capuchino py-6 h-full">
+      <FlujoRegistroSectionIsland client:visible queryParams={queryParams} />
 
     </div>
     <!-- <div class="snap-center">

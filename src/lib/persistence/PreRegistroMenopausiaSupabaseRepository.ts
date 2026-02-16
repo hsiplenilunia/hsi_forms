@@ -5,7 +5,7 @@ export class PreRegistroMenopausiaSupabaseRepository {
 
     async createPreRegistro(data: any) {
         const { data: result, error } = await this.supabaseClient
-            .from('pre_registro_menopausia')
+            .from('hsi_nuevo_colaborador')
             .insert([data])
             .select();
         if (error) throw error;
@@ -14,7 +14,7 @@ export class PreRegistroMenopausiaSupabaseRepository {
 
     async newRetryCount(email: string, retryCount: number) {
         const { data, error } = await this.supabaseClient
-            .from('pre_registro_menopausia')
+            .from('hsi_nuevo_colaborador')
             .update({ re_try_count: retryCount + 1 })
             .eq('correoElectronico', email)
             .select();
@@ -24,7 +24,7 @@ export class PreRegistroMenopausiaSupabaseRepository {
     }
     async checkExistingEmail(email: string) {
         const { data, error } = await this.supabaseClient
-            .from('pre_registro_menopausia')
+            .from('hsi_nuevo_colaborador')
             .select('*')
             .eq('correoElectronico', email);
         if (error) throw error;

@@ -15,10 +15,10 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({ closePopup }) => {
             </h2>
             <div className="space-y-4">
                 <p className="text-gray-600">
-                    Tu registro ha sido exitoso. Te notificaremos por email cuando se abra la venta de boletos.
+                    Tu registro ha sido exitoso.
                 </p>
                 <p className="text-sm text-gray-500">
-                    Mantén un ojo en tu bandeja de entrada para no perderte ninguna actualización.
+                    
                 </p>
             </div>
             <button

@@ -3,6 +3,7 @@ import { ladasByCountry } from "../../data/ladasByCountry";
 import { CountryLadaSelect, type Country } from "../atoms/LadaSelect";
 export interface RegistrationFormProps {
     setCurrentState: React.Dispatch<React.SetStateAction<string>>;
+    queryParams?: Record<string, string>;
 }
 
 export interface FormDataPayload {
@@ -11,8 +12,9 @@ export interface FormDataPayload {
     correoElectronico: string;
     whatsappCountry?: Country | null;
     whatsapp: string;
-    anoNacimiento: string;
+    especialidad: string;
     aceptaPrivacidad: boolean;
+    role?: string;
 }
 
 // Errores de validación
@@ -22,11 +24,13 @@ export interface FormErrors {
     correoElectronico?: string;
     whatsapp?: string;
     whatsappCountry?: string;
-    anoNacimiento?: string;
+    especialidad?: string;
     aceptaPrivacidad?: string;
+    role?: string;
 }
 
-export const RegistrationForm: React.FC<RegistrationFormProps> = ({ setCurrentState }) => {
+export const RegistrationForm: React.FC<RegistrationFormProps> = ({ setCurrentState, queryParams = {} }) => {
+    console.log("Renderizando RegistrationForm con queryParams:", queryParams);
 
     const [FormDataPayload, setFormDataPayload] = useState<FormDataPayload>({
         nombre: '',
@@ -34,8 +38,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ setCurrentSt
         correoElectronico: '',
         whatsapp: '',
         whatsappCountry: ladasByCountry[0], // Por defecto el primer país
-        anoNacimiento: '',
+        especialidad: '',
         aceptaPrivacidad: false,
+        role: ''
     });
 
     const [errors, setErrors] = useState<FormErrors>({});
@@ -80,9 +85,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ setCurrentSt
             newErrors.whatsapp = 'Debe ser un número telefónico válido (8 a 13 dígitos)';
         }
 
-        // Validación año de nacimiento
-        if (!FormDataPayload.anoNacimiento) {
-            newErrors.anoNacimiento = 'Selecciona tu año de nacimiento';
+        // Validación especialidad
+        if (!FormDataPayload.especialidad) {
+            newErrors.especialidad = 'Selecciona tu especialidad';
         }
 
         // Validación checkbox privacidad
@@ -120,12 +125,12 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ setCurrentSt
             // Aquí puedes agregar la lógica para enviar los datos
             console.log('Datos del formulario:', FormDataPayload);
 
+            FormDataPayload.role = queryParams.r || '';
 
-
-            const res = await fetch('/api/registro', {
+            const res = await fetch('/api/nuevo_colaborador', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(FormDataPayload),
+                body: JSON.stringify({ ...FormDataPayload }),
             });
             const result = await res.json();
             if (result.success) {
@@ -155,9 +160,10 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ setCurrentSt
     return (
         <div className="space-y-6">
             <h2 className="text-xl md:text-2xl font-bold text-purple-800 text-center">
-                Pre-Registro
+                { queryParams?.r ? ` ${queryParams.r}` : `Registro` }
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
+                <input type="hidden" name="role" value={FormDataPayload.role} />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Nombre*/}
                     <div>
@@ -197,27 +203,22 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ setCurrentSt
                         )}
                     </div>
 
-                    {/* Año de Nacimiento */}
+                    {/* Especialidad */}
                     <div>
                         <label className="block text-sm font-medium text-purple-700 mb-1">
-                            Año de Nacimiento
+                            Especialidad
                         </label>
-                        <select
-                            name="anoNacimiento"
-                            value={FormDataPayload.anoNacimiento}
+                        <input
+                            type="text"
+                            name="especialidad"
+                            value={FormDataPayload.especialidad}
                             onChange={handleInputChange}
-                            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 ${errors.anoNacimiento ? 'border-red-500' : 'border-gray-300'
+                            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 ${errors.correoElectronico ? 'border-red-500' : 'border-gray-300'
                                 }`}
-                        >
-                            <option value="">Selecciona tu año</option>
-                            {generateYears().map(year => (
-                                <option key={year} value={year}>
-                                    {year}
-                                </option>
-                            ))}
-                        </select>
-                        {errors.anoNacimiento && (
-                            <p className="text-red-500 text-xs mt-1">{errors.anoNacimiento}</p>
+                            placeholder="Tu especialidad"
+                        />
+                        {errors.especialidad && (
+                            <p className="text-red-500 text-xs mt-1">{errors.especialidad}</p>
                         )}
                     </div>
 
