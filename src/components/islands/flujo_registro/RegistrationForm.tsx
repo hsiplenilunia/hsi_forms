@@ -284,7 +284,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({ setCurrentSt
                         />
                         <span className="text-sm text-gray-600">
                             Acepto el{' '}
-                            <a href="#" target='_blank' className="font-bold text-purple-700 hover:underline">
+                            <a href="https://hospitalsininfecciones.com/formularios-aviso-de-privacidad" target='_blank' className="font-bold text-purple-700 hover:underline">
                                 Aviso de Privacidad
                             </a>
                         </span>
